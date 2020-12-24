@@ -3,7 +3,7 @@
 # Contents
 
 - [General](#general)
-- Language-specific: [C](#c), [C#](#c-1), [Common Lisp](#common-lisp), [D](#d), [Haskell](#haskell), [Java](#java), [JavaScript](#javascript), [Julia](#julia), [Lua](#lua), [Objective-C](#objective-c), [PHP](#php), [Python](#python), [R](#r), [Rust](#rust), [Scheme](#scheme), [Stata](#stata)
+- Language-specific: [Bash](#bash), [C](#c), [C#](#c-1), [Common Lisp](#common-lisp), [D](#d), [Haskell](#haskell), [Java](#java), [JavaScript](#javascript), [Julia](#julia), [Lua](#lua), [Objective-C](#objective-c), [OCaml](#ocaml), [PHP](#php), [Python](#python), [R](#r), [Rust](#rust), [Scheme](#scheme), [Stata](#stata)
 
 ---
 
@@ -14,19 +14,23 @@
 - libffi: A portable foreign-function interface library
 	- http://sourceware.org/libffi
 	- https://github.com/libffi/libffi
+- Scapix Language Bridge
+	- Automatic, on the fly bindings from C++ to Java, Objective-C, Swift, Python, JavaScript (WebAssembly), and C#. Bridge code automatically generated directly from C++ header files, no need to manually maintain IDL definitions or bindings.
+	- https://github.com/scapix-com/scapix
 - SWIG: Simplified Wrapper and Interface Generator
 	- http://www.swig.org/
 
 ---
 
+# Bash
+
+- ctypes.sh: a foreign function interface for bash
+	- https://github.com/taviso/ctypes.sh
+
+---
+
 # C
 
-- C handler wrapping in C++ - https://arekmd.github.io/wrapping-c-handlers/
-- CppCon 2014: Lisa Lippincott "How to call C libraries from C++"
-	- https://www.youtube.com/watch?v=3ZO0V4Prefc
-	- https://github.com/CppCon/CppCon2014/tree/master/Presentations/How%20to%20call%20C%20libraries%20from%20C%2B%2B
-	- Code and slides from Lisa Lippincott's “How to Call C libraries from C++” presentation from Cppcon 2014
-	- https://github.com/jfirebaugh/PlusPlus
 - Cross-language interfaces between C and C++ - https://gustedt.wordpress.com/2017/08/08/cross-language-interfaces-between-c-and-c/
 - DragonFFI: C Foreign Function Interface and JIT using Clang/LLVM
 	- DragonFFI is a C Foreign Function Interface (FFI) library written in C++ and based on Clang/LLVM. It allows any language to call C functions thought the provided APIs and bindings.
@@ -39,7 +43,13 @@
 	- https://www.slideshare.net/StefanusDuToit/cpp-con-2014-hourglass-interfaces-for-c-apis
 	- https://www.youtube.com/watch?v=PVYdHDm0q6Y
 	- https://github.com/CppCon/CppCon2014/tree/master/Presentations/Hourglass%20Interfaces%20for%20C%2B%2B%20APIs
-- Skip the FFI: Embedding Clang for C Interoperability 
+- How to call C libraries from C++
+	- CppCon 2014; Lisa Lippincott
+	- https://www.youtube.com/watch?v=3ZO0V4Prefc
+	- https://github.com/CppCon/CppCon2014/tree/master/Presentations/How%20to%20call%20C%20libraries%20from%20C%2B%2B
+	- Code and slides from Lisa Lippincott's “How to Call C libraries from C++” presentation from Cppcon 2014
+	- https://github.com/jfirebaugh/PlusPlus
+- Skip the FFI: Embedding Clang for C Interoperability
 	- 2014 LLVM Developers' Meeting
 	- Jordan Rose, John McCall
 	- https://llvm.org/devmtg/2014-10/#talk18
@@ -62,6 +72,9 @@
 - CppSharp
 	- Tools and libraries to glue C/C++ APIs to high-level languages
 	- https://github.com/mono/CppSharp
+- Dynamic Invocation (Avoiding PInvoke & API Hooks)
+	- https://thewover.github.io/Dynamic-Invoke/
+	- https://github.com/FuzzySecurity/BlueHatIL-2020
 - P/Invoke: A library containing all P/Invoke code so you don't have to import it every time. Maintained and updated to support the latest Windows OS.
 	- https://github.com/AArnott/pinvoke
 - The .NET Inter-Operability Operation
@@ -85,8 +98,8 @@
 	- https://github.com/atilaneves/dpp
 	- https://dlang.org/blog/2019/04/08/project-highlight-dpp/
 - Zero Overhead Interface Between DLang & C++ Standard Lib
-	- Alexandru Razvan Caciulescu | DConf2017
-	- https://www.youtube.com/watch?v=c5zGnOWKaGo
+	- DConf2017; Alexandru Razvan Caciulescu
+	- https://www.youtube.com/watch?v=j-Ws4VjyUWg
 
 ---
 
@@ -98,11 +111,14 @@
 	- https://wiki.haskell.org/Cxx_foreign_function_interface
 - fficxx - FFI to C++ in Haskell
 	- Haskell-C++ Foreign Function Interface Generator
-	- http://ianwookim.org/fficxx/
+	- https://web.archive.org/http://ianwookim.org/fficxx/
 	- https://github.com/wavewave/fficxx
 - inline-c-cpp: Lets you embed C++ code into Haskell
 	- http://hackage.haskell.org/package/inline-c-cpp
 	- https://github.com/fpco/inline-c
+- Stranger in a Strange Land: An introductory tour of the Haskell FFI
+	- Haskell DC 2020; P.C. Shyamshankar
+	- https://www.youtube.com/watch?v=zlOrYQH_-Xs
 
 ---
 
@@ -179,6 +195,24 @@
 
 ---
 
+# OCaml
+
+- Foreign Function Interface - Real World OCaml
+	- http://dev.realworldocaml.org/foreign-function-interface.html
+- Interfacing C with OCaml
+	- https://caml.inria.fr/pub/docs/manual-ocaml/intfc.html
+- Duplo: A Framework for OCaml Post-Link Optimisation
+	- [ICFP 2020](https://icfp20.sigplan.org/details/icfp-2020-papers/5/Duplo-A-Framework-for-OCaml-Post-Link-Optimisation)
+	- Nandor Licker, Timothy M. Jones
+	- https://www.cl.cam.ac.uk/~nl364/docs/duplo.pdf
+	- LLIR (Low-Level Intermediate Representation) cross-language post-link optimiser for OCaml and C
+		- https://github.com/nandor/llir-opt
+- cxx_wrapped.h
+	- simple template to wrap C++ object as OCaml custom value (used for example in ocaml-hypertable)
+	- https://github.com/ygrek/scraps/blob/master/cxx_wrapped.h
+
+---
+
 # PHP
 
 - PHP++: C++11 Class wrap library for PHP7
@@ -194,8 +228,14 @@
 	- part 3 - deep dive into ctypes implementation in CPython
 		- http://yizhang82.me/python-interop-inside-ctypes
 		- https://blogs.msdn.microsoft.com/yizhang/2018/02/02/calling-c-functions-from-python-part-3-deep-dive-into-ctypes-implementation-in-cpython/
-- cppyy: Automatic Python-C++ bindings
+- cppyy: Python-C++ bindings interface based on Cling/LLVM
+	- https://bitbucket.org/wlav/cppyy
 	- https://cppyy.readthedocs.io/
+	- High-performance Python-C++ bindings with PyPy and Cling
+		- PyHPC 2016
+		- Wim T. L. P. Lavrijsen, Aditi Dutta
+		- https://dl.acm.org/doi/10.5555/3019083.3019087
+		- http://wlav.web.cern.ch/wlav/Cppyy_LavrijsenDutta_PyHPC16.pdf
 - Cython: Static Typing and C/C++ Interfacing in (C)Python
 	- StockholmCpp; October 24, 2019; Arda Aytekin
 	- https://www.youtube.com/watch?v=0R3fw7h64MY
@@ -233,12 +273,16 @@
 
 # Rust
 
+- Autocxx: a tool for calling C++ from Rust in a heavily automated but safe fashion
+	- https://github.com/google/autocxx
 - bindgen: Automatically generates Rust FFI bindings to C and C++ libraries
 	- https://github.com/rust-lang/rust-bindgen
 - cbindgen: creates C/C++11 headers for Rust libraries which expose a public C API
 	- https://github.com/eqrion/cbindgen
 	- cbindgen User Guide
 		- https://github.com/eqrion/cbindgen/blob/master/docs.md
+- CXX: safe FFI between Rust and C++
+	- https://github.com/dtolnay/cxx
 - rustcxx: Using C++ from Rust made easy
 	- https://github.com/google/rustcxx
 

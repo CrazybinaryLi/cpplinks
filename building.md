@@ -1,5 +1,11 @@
 # [C++ links](README.md): Building, Build Systems, and Build Performance Optimization
 
+See also:
+
+- [Compilers](https://github.com/MattPD/cpplinks/blob/master/compilers.md)
+- [Linking and Loading](https://github.com/MattPD/cpplinks/blob/master/executables.linking_loading.md)
+- [Testing](https://github.com/MattPD/cpplinks/blob/master/testing.md): [Continuous Integration](https://github.com/MattPD/cpplinks/blob/master/testing.md#continuous-integration)
+
 # Contents
 
 - [Readings](#readings):
@@ -26,6 +32,7 @@
 		- [CMake Readings](#cmake-readings)
 		- [CMake Software](#cmake-software)
 		- [CMake Talks](#cmake-talks)
+	- [FASTBuild](#fastbuild)
 	- [Gradle](#gradle)
 	- [Make](#make):
 		- [GNU Make](#gnu-make)
@@ -52,6 +59,10 @@
 	- https://blogs.ncl.ac.uk/andreymokhov/build-systems-a-la-carte/
 	- https://icfp18.sigplan.org/event/icfp-2018-papers-build-systems-a-la-carte
 	- https://www.youtube.com/watch?v=BQVT6wiwCxM
+	- Build Systems à La Carte: Theory and Practice
+		- Journal of Functional Programming 30 (2020)
+		- Andrey Mokhov, Neil Mitchell, Simon Peyton Jones
+		- https://doi.org/10.1017/S0956796820000088
 - Build System Rules and Algorithms
 	- Mike Shal (2009)
 	- http://gittup.org/tup/build_system_rules_and_algorithms.pdf
@@ -83,6 +94,11 @@
 
 ## Correctness
 
+- A Model for Detecting Faults in Build Specifications
+	- SPLASH 2020 OOPSLA
+	- Thodoris Sotiropoulos, Stefanos Chaliasos, Dimitris Mitropoulos, Diomidis Spinellis
+	- https://2020.splashcon.org/details/splash-2020-oopsla/20/A-Model-for-Detecting-Faults-in-Build-Specifications
+	- https://dimitro.gr/assets/papers/SCMS20.pdf
 - Detecting Incorrect Build Rules
 	- International Conference on Software Engineering (ICSE) 2019
 	- Nandor Licker, Andrew Rice
@@ -90,6 +106,16 @@
 	- https://www.repository.cam.ac.uk/handle/1810/288468
 	- mkcheck: Incremental Build Verification
 		- https://github.com/nandor/mkcheck
+- Escaping Dependency Hell: Finding Build Dependency Errors with the Unified Dependency Graph
+	- International Symposium on Software Testing and Analysis (ISSTA) 2020
+	- Gang Fan, Chengpeng Wang, Rongxin Wu, Qingkai Shi, Charles Zhang
+	- https://qingkaishi.github.io/public_pdfs/ISSTA20-VeriBuild.pdf
+	- https://veribuild.github.io/
+	- https://conf.researchr.org/details/issta-2020/issta-2020-papers/38/Escaping-Dependency-Hell-Finding-Build-Dependency-Errors-with-the-Unified-Dependency
+- Identifying Bugs in Make and JVM-Oriented Builds
+	- 2020
+	- Thodoris Sotiropoulos, Stefanos Chaliasos, Dimitris Mitropoulos, Diomidis Spinellis
+	- https://arxiv.org/abs/2005.06881
 - Oops, My Tests Broke the Build: An Explorative Analysis of Travis CI with GitHub
 	- Mining Software Repositories (MSR) 2017
 	- M. Beller, G. Gousios, A. Zaidman
@@ -110,6 +136,11 @@
 	- Bo Zhou, Xia Xin, David Lo, Xinyu Wang
 	- http://www.mysmu.edu/faculty/davidlo/papers/compsac14-dependency.pdf
 	- https://www.semanticscholar.org/paper/Build-Predictor%3A-More-Accurate-Missed-Dependency-in-Zhou-Xia/a4d4b05c8594fc7358a89f0afffb7e405b65fa0d
+- Build Scripts with Perfect Dependencies
+	- SPLASH 2020 OOPSLA
+	- Sarah Spall, Neil Mitchell, Sam Tobin-Hochstadt
+	- https://arxiv.org/abs/2007.12737
+	- https://2020.splashcon.org/details/splash-2020-oopsla/45/Build-Scripts-with-Perfect-Dependencies
 - Program Repository
 	- LLVM with Program Repository Support
 			- https://github.com/SNSystems/llvm-project-prepo
@@ -122,9 +153,15 @@
 		- https://llvm.org/devmtg/2016-11/Slides/Bowen-Hugett-ToyProgrammingDemo.pdf
 		- https://youtu.be/-pL94rqyQ6c
 	- Targeting a statically compiled program repository with LLVM
-		- 2019 EuroLLVM Developers’ Meeting; Phil Camp , Russell Gallop 
-		- https://www.youtube.com/watch?v=mlQyEBDnDJE 
+		- 2019 EuroLLVM Developers’ Meeting; Phil Camp, Russell Gallop
+		- https://www.youtube.com/watch?v=mlQyEBDnDJE
 		- http://llvm.org/devmtg/2019-04/slides/Lightning-Camp-Program_Repo.pdf
+	- LLVM Build Times Using a Program Repository
+		- https://www.snsystems.com/technology/tech-blog/llvm-build-times-using-a-program-repository
+	- Compile Faster with the Program Repository and ccache
+		- 2020 European LLVM Developers Meeting; Ying Yi, Paul Bowen-Huggett
+		- http://www.llvm.org/devmtg/2020-04/talks.html#LightningTalk_51
+		- https://www.snsystems.com/technology/tech-blog/compile-faster-with-the-program-repository-and-ccache
 - mtime comparison considered harmful
 	- "tl;dr: Rebuilding a target because its mtime is older than the mtimes of its dependencies, like make does, is very error prone. redo does it better, and so can you."
 	- https://apenwarr.ca/log/20181113
@@ -133,14 +170,19 @@
 	- Andrey Mokhov, Neil Mitchell, Simon Peyton Jones, Simon Marlow
 	- https://www.microsoft.com/en-us/research/publication/non-recursive-make-considered-harmful/
 	- https://simonmar.github.io/bib/shake-2016_abstract.html
-- Recursive Make Considered Harmful 
+- Recursive Make Considered Harmful
 	- Journal of AUUG Inc, 19(1):14–25, 1998
 	- Peter Miller
-	- http://aegis.sourceforge.net/auug97.pdf
+	- https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.20.2572&rank=1
 	- http://sites.e-advies.nl/nonrecursive-make.html
 
 ## Distributed
 
+- Build in the Cloud
+	- Accessing Source Code: http://google-engtools.blogspot.com/2011/06/build-in-cloud-accessing-source-code.html
+	- How the Build System works: http://google-engtools.blogspot.com/2011/08/build-in-cloud-how-build-system-works.html
+	- Distributing Build Steps: http://google-engtools.blogspot.com/2011/09/build-in-cloud-distributing-build-steps.html
+	- Distributing Build Outputs: http://google-engtools.blogspot.com/2011/10/build-in-cloud-distributing-build.html
 - CloudBuild: Microsoft’s Distributed and Caching Build Service
 	- International Conference on Software Engineering (ICSE) 2016
 	- Hamed Esfahani, Jonas Fietz, Qi Ke, Alexei Kolomiets, Erica Lan, Erik Mavrinac, Wolfram Schulte, Newton Sanches, Srikanth Kandula
@@ -154,6 +196,11 @@
 		- https://www.usenix.org/system/files/login/articles/login_fall19_02_fouladi.pdf
 	- gg: The Stanford Builder
 		- https://github.com/stanfordsnr/gg
+- Scalable Build Service System with Smart Scheduling Service
+	- International Symposium on Software Testing and Analysis (ISSTA) 2020
+	- Kaiyuan Wang, Greg Tener, Vijay Gullapalli, Xin Huang, Ahmed Gad, Daniel Rall
+	- https://kaiyuanw.github.io/papers/paper24-issta20.pdf
+	- https://conf.researchr.org/details/issta-2020/issta-2020-papers/6/Scalable-Build-Service-System-with-Smart-Scheduling-Service
 
 ## Incremental Building
 
@@ -167,6 +214,14 @@
 	- Guillaume Maudoux and Kim Mens
 	- https://dial.uclouvain.be/pr/boreal/object/boreal:189543
 	- http://sattose.wdfiles.com/local--files/2017:schedule/SATToSE_2017_paper_3.pdf
+- Constructing Hybrid Incremental Compilers for Cross-Module Extensibility with an Internal Build System
+	- ‹Programming› 2020
+	- Jeff Smits, Gabriël Konat, Eelco Visser
+	- https://2020.programming-conference.org/details/programming-2020-papers/16/Constructing-Hybrid-Incremental-Compilers-for-Cross-Module-Extensibility-with-an-Inte
+- Incremental Whole Program Optimization and Compilation
+	- CGO 2017
+	- Patrick W. Sathyanathan, Wenlei He, Ten H. Tzen
+	- http://dl.acm.org/citation.cfm?id=3049857
 - Scalable Incremental Building with Dynamic Task Dependencies
 	- Automated Software Engineering (ASE) 2018
 	- Gabriël Konat, Sebastian Erdweg, Eelco Visser
@@ -218,6 +273,8 @@
 			- Which header files are included (hierarchically), with time taken for each,
 			- Which classes are being parsed, with time taken for each,
 			- Which functions are being parsed, with time taken for each.
+- Big Project Build Times–Chromium
+	- https://randomascii.wordpress.com/2020/03/30/big-project-build-times-chromium/
 - C++ Compilation Speed
 	- Walter Bright - DDJ, August 17, 2010
 	- https://digitalmars.com/articles/b54.html
@@ -230,13 +287,30 @@
 	- Automated Software Engineering, Vol. 23, No. 4, 2016
 	- Shane McIntosh, Bram Adams, Meiyappan Nagappan, Ahmed E. Hassan
 	- http://rebels.ece.mcgill.ca/journalpaper/2015/07/08/identifying-and-understanding-header-file-hotspots-in-c-cpp-build-processes.html
+- Improving C++ Builds with Split DWARF
+	- https://www.productive-cpp.com/improving-cpp-builds-with-split-dwarf/
+- Improving Compilation Time of C/C++ Projects
+	- https://interrupt.memfault.com/blog/improving-compilation-times-c-cpp-projects
+- Investigating C++ compile times
+	- My journey investigating slow compile times in C++
+		- https://metanokid.github.io/coding-scars/investigating-cpp-compile-times-0
+	- Useful tools to investigate C++ compile times
+		- https://metanokid.github.io/coding-scars/investigating-cpp-compile-times-1
+	- Understanding MSBuild to create flame graphs
+		- https://metanokid.github.io/coding-scars/investigating-cpp-compile-times-2
+	- Improving C++ compile times using flame graphs
+		- https://metanokid.github.io/coding-scars/investigating-cpp-compile-times-3
+	- Getting data from C++ Build Insights SDK
+		- https://metanokid.github.io/coding-scars/investigating-cpp-compile-times-4
 - Physical Design of The Machinery
 	- http://ourmachinery.com/post/physical-design/
 - Reducing Build Time through Precompilations for Evolving Large Software
 	- International Conference on Software Maintenance (ICSM) 2005
-	- Yu, Yijun; Dayani-Fard, Homayoun; Mylopoulos, John and Andritsos, Periklis 
+	- Yu, Yijun; Dayani-Fard, Homayoun; Mylopoulos, John and Andritsos, Periklis
 	- http://www.cs.toronto.edu/%7Eperiklis/pubs/icsm05.pdf
 	- http://oro.open.ac.uk/6944/
+- The Little Things: Speeding up C++ compilation
+	- https://codingnest.com/the-little-things-speeding-up-c-compilation/
 - To Unify or Not to Unify: A Case Study on Unified Builds (in WebKit)
 	- Compiler Construction (CC) 2019
 	- Takafumi Kubota, Yusuke Suzuki, and Kenji Kono
@@ -250,6 +324,14 @@
 
 ### Benchmarking and Profiling
 
+- C++ Build Benchmarks
+	- https://build-bench.com/
+	- Docker runner for build-bench
+		- https://github.com/FredTingaud/bench-runner
+- C++ Compile Health Watchdog
+	- Benchmark and accountability tool for C++ compile-time overhead / compile-time health.
+	- https://github.com/Philip-Trettner/cpp-compile-overhead
+	- Results: https://artificial-mind.net/projects/compile-health/
 - Clang -ftime-trace and ftime-trace-granularity=N
 	- http://releases.llvm.org/9.0.0/tools/clang/docs/ReleaseNotes.html#new-compiler-flags
 	- Clang Time Trace Feature
@@ -274,11 +356,33 @@
 		- 2015 EuroLLVM Developers’ Meeting, Zoltan Porkolab
 		- https://llvm.org/devmtg/2015-04/slides/EuroLLVM2015Templight.pdf
 		- https://www.youtube.com/watch?v=djAPtopWhRU
-- Visual C++ - C++ Build Insights
-	- Get started with C++ Build Insights
-		- https://docs.microsoft.com/en-us/cpp/build-insights/get-started-with-cpp-build-insights
-	- Introducing C++ Build Insights
-		- https://devblogs.microsoft.com/cppblog/introducing-c-build-insights/
+- Visual C++
+	- vcperf: A build analysis tool for the MSVC toolchain
+		- https://github.com/microsoft/vcperf
+	- MSBuild Flame Graph: Turns MSBuild executions into flame graphs
+		- https://github.com/MetanoKid/msbuild-flame-graph
+	- C++ Build Analyzer: Analyzes MSVC C++ compilations with C++ Build Insights SDK
+		- https://github.com/MetanoKid/cpp-build-analyzer
+	- C++ Build Insights
+		- Code samples for the C++ Build Insights SDK
+			- https://github.com/microsoft/cpp-build-insights-samples
+		- Get started with C++ Build Insights
+			- https://docs.microsoft.com/en-us/cpp/build-insights/get-started-with-cpp-build-insights
+		- Introducing C++ Build Insights
+			- https://devblogs.microsoft.com/cppblog/introducing-c-build-insights/
+		- Analyze your builds programmatically with the C++ Build Insights SDK
+			- https://devblogs.microsoft.com/cppblog/analyze-your-builds-programmatically-with-the-c-build-insights-sdk/
+		- Finding build bottlenecks with C++ Build Insights
+			- https://devblogs.microsoft.com/cppblog/finding-build-bottlenecks-with-cpp-build-insights/
+		- Faster builds with PCH suggestions from C++ Build Insights
+			- https://devblogs.microsoft.com/cppblog/faster-builds-with-pch-suggestions-from-c-build-insights/
+		- Improving code generation time with C++ Build Insights
+			- https://devblogs.microsoft.com/cppblog/improving-code-generation-time-with-cpp-build-insights/
+		- Introducing vcperf /timetrace for C++ build time analysis
+			- https://devblogs.microsoft.com/cppblog/introducing-vcperf-timetrace-for-cpp-build-time-analysis/
+		- Faster C++ builds, simplified: a new metric for time
+			- the wall clock time responsibility (WCTR): can be used to estimate how much time is really spent by each activity in your build, even in the presence of parallelism.
+			- https://devblogs.microsoft.com/cppblog/faster-cpp-builds-simplified-a-new-metric-for-time/
 
 ### Caching
 
@@ -297,7 +401,7 @@
 	- https://github.com/tomtom-international/cpp-dependencies
 - Header Hero: optimizing C++ codebase header #include dependencies
 	- A tool for optimizing C++ header files and reducing build times.
-	- https://bitbucket.org/bitsquid/header_hero
+	- https://github.com/niklas-ourmachinery/bitsquid-header-hero
 	- https://bitsquid.blogspot.com/2011/10/caring-by-sharing-header-hero.html
 	- https://aras-p.info/blog/2018/01/17/Header-Hero-Improvements/
 - include-what-you-use
@@ -310,6 +414,10 @@
 - Common-sense acceleration of your MLOC build
 	- CppCon 2014; Matt Hargett
 	- https://www.youtube.com/watch?v=t4M3yG1dWho
+- Compiling C++ is slow - let's go faster
+	- StockholmCpp 2020; Tobias Hieta
+	- https://www.youtube.com/watch?v=X4pyOtawqjg
+	- https://gist.github.com/tru/ad677ba2b1d543e238b0e09eb3aad3ac
 - LLVM Compile-Time: Challenges. Improvements. Outlook.
 	- 2017 LLVM Developers’ Meeting; Michael Zolotukhin
 	- https://www.youtube.com/watch?v=bYHMwyyZ6Mk
@@ -339,6 +447,13 @@
 
 - Build System Shootout: Comparison of build program expressive power
 	- https://github.com/ndmitchell/build-shootout
+- blight: a framework for wrapping and instrumenting build tools
+	- https://github.com/trailofbits/blight
+	- High-fidelity build instrumentation with blight
+		- https://blog.trailofbits.com/2020/11/25/high-fidelity-build-instrumentation-with-blight/
+- Build Interceptor
+	- a collection of scripts for recording the .i files generated during a build of C or C++ programs with the GCC toolchain
+	- https://github.com/dsw/build-interceptor
 - TraceCode: Trace a build to find out which source files are built in a binary
 	- https://github.com/nexB/tracecode-toolkit
 	- Debug your build by tracing and reversing: stracing your build from sources to binaries
@@ -358,14 +473,15 @@
 	- http://markuskimius.wikidot.com/programming:tut:autotools
 - Autotools, 2nd Edition
 	- A Practitioner's Guide to GNU Autoconf, Automake, and Libtool
-	- John Calcote
+	- 2019; John Calcote
 	- https://nostarch.com/autotools2e
 	- Chapter 2: A Brief Introduction to the GNU Autotools
 		- https://nostarch.com/download/samples/Autotools2e_Sample_Ch2.pdf
 - Autotools: A Demystification Tutorial
-	- Embedded Linux Conference 2016; Thomas Petazzoni
-	- https://www.youtube.com/watch?v=_zX8LJ9Xjyk
-	- http://events.linuxfoundation.org/sites/events/files/slides/petazzoni-autotools-tutorial.pdf
+	- [Embedded Linux Conference 2016](https://elinux.org/ELC_2016_Presentations); Thomas Petazzoni
+	- https://www.youtube.com/watch?v=a1NRxIA9ahA
+	- https://elinux.org/images/4/43/Petazzoni.pdf
+	- https://bootlin.com/pub/conferences/2016/elc/petazzoni-autotools-tutorial/
 - Autotools: a practitioner's guide to Autoconf, Automake and Libtool
 	- http://freesoftwaremagazine.com/books/autotools_a_guide_to_autoconf_automake_libtool/
 - Four Languages and Lots of Macros: Analyzing Autotools Build Systems
@@ -375,7 +491,6 @@
 	- https://www.cs.cmu.edu/~ckaestne/pdf/gpce17.pdf
 - GNU Autoconf: A uniform means of creating makefiles at build time
 	- Ethan McCallum - C/C++ Users Journal, January 2006
-	- http://collaboration.cmc.ec.gc.ca/science/rpn/biblio/ddj/Website/articles/CUJ/2006/0601/0601mccallum/0601mccallum.html
 	- https://web.archive.org/http://www.drdobbs.com/gnu-autoconf/184402060
 	- https://web.archive.org/http://collaboration.cmc.ec.gc.ca/science/rpn/biblio/ddj/Website/articles/CUJ/2006/0601/0601mccallum/0601mccallum.html
 - GNU Autoconf, Automake and Libtool
@@ -448,7 +563,7 @@
 	- https://github.com/Akagi201/learning-cmake
 - Modern CMake Examples
 	- https://github.com/pr0g/cmake-examples
-- Polly: Collection of CMake toolchain files and scripts for cross-platform build and CI testing (GCC, Visual Studio, iOS, Android, Clang analyzer, sanitizers etc.) 
+- Polly: Collection of CMake toolchain files and scripts for cross-platform build and CI testing (GCC, Visual Studio, iOS, Android, Clang analyzer, sanitizers etc.)
 	- https://github.com/ruslo/polly
 
 ### CMake Readings
@@ -459,6 +574,8 @@
 	- https://codingnest.com/basic-cmake/
 - CGold: The Hitchhiker’s Guide to the CMake
 	- https://cgold.readthedocs.io/en/latest/
+- CMake 3.16 added support for precompiled headers & unity builds - what you need to know
+	- http://onqtam.com/programming/2019-12-20-pch-unity-cmake-3-16/
 - CMake Coding Style
 	- https://community.kde.org/Policies/CMake_Coding_Style
 - Dev Santa Claus - Nick Sarten
@@ -476,12 +593,21 @@
 	- https://izzys.casa/2019/02/everything-you-never-wanted-to-know-about-cmake/
 - How to Build a CMake-Based Project
 	- http://preshing.com/20170511/how-to-build-a-cmake-based-project/
+- How To Find Packages With CMake: The Basics
+	- https://dev.to/slurpsmadrips/how-to-find-packages-with-cmake-the-basics-ikk
 - It's Time To Do CMake Right
 	- https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/
 - Learn CMake's Scripting Language in 15 Minutes
 	- http://preshing.com/20170522/learn-cmakes-scripting-language-in-15-minutes/
+- More Modern CMake
+	- https://hsf-training.github.io/hsf-training-cmake-webpage/
 - Professional CMake: A Practical Guide
 	- https://crascit.com/professional-cmake/
+- siliceum - Clément Grégoire
+	- CMake basics
+		- https://www.siliceum.com/en/blog/post/cmake_01_cmake-basics
+	- CMake customization points
+		- https://www.siliceum.com/en/blog/post/cmake_02_customization-points
 - Speed up your C++ unit tests cycles with CMake/CTest (and the right testing framework)
 	- https://a4z.bitbucket.io/blog/2018/05/17/Speed-up-your-test-cycles-with-CMake.html
 - The Architecture of Open Source Applications: CMake
@@ -520,33 +646,28 @@
 	- https://github.com/TheLartians/CPM.cmake
 - Izzy's eXtension Modules: Make CMake less painful when trying to write Modern Flexible CMake
 	- https://github.com/slurps-mad-rips/ixm
+- package-example: CMake: config mode of find_package command
+	- https://github.com/forexample/package-example
 - ucm - useful cmake macros
 	- https://github.com/onqtam/ucm
 
 ### CMake Talks
 
-- Building C++
-	- C++ Edinburgh 2018; Morris Hafner
-	- https://www.youtube.com/watch?v=n_f-2p5eDBo
+#### CMake Talks: 2020
+
 - C++ Weekly - Jason Turner
-	- Ep 78 - Intro to CMake
-		- https://www.youtube.com/watch?v=HPMvU64RUTY
-		- https://github.com/lefticus/cpp_starter_project
-	- Ep 82 - Intro To CTest
-		- https://www.youtube.com/watch?v=ZlMbqFcJEzA
+	- Ep 208 - The Ultimate CMake / C++ Quick Start (2020)
+		- "CMake, sanitizers, clang-tidy, conan, cmake-format, clang-format, cppcheck, doxygen, ctest, catch, {fmt}, and more!"
+		- https://www.youtube.com/watch?v=YbgH7yat-Jo
+- Modern CMake: An introduction
+	- DC C++ User Group 2020; Eric Richardson
+	- https://www.youtube.com/watch?v=bDdkJu-nVTo
+
+#### CMake Talks: 2019
+
 - Deep CMake for Library Authors
 	- CppCon 2019; Craig Scott
 	- https://www.youtube.com/watch?v=m0DwB4OvDXk
-- Effective CMake
-	- Daniel Pfeifer
-	- C++Now 2017
-		- https://www.youtube.com/watch?v=bsXLMQ6WgIk
-		- https://github.com/boostcon/cppnow_presentations_2017/raw/master/05-19-2017_friday/effective_cmake__daniel_pfeifer__cppnow_05-19-2017.pdf
-	- MUCplusplus 2017
-		- https://www.youtube.com/watch?v=rLopVhns4Zs
-- Effective dependency management with CMake
-	- MUCplusplus 2017; Kai Wolf 
-	- https://www.youtube.com/watch?v=QayyhI-36os
 - Embracing Modern CMake
 	- Stephen Kelly
 	- https://steveire.wordpress.com/2017/11/05/embracing-modern-cmake/
@@ -554,7 +675,18 @@
 		- https://www.youtube.com/watch?v=JsjI5xr1jxM
 	- NDC TechTown 2019
 		- https://www.youtube.com/watch?v=mn1ZnO3MtVk
+- Oh No! More Modern CMake
+	- Meeting C++ 2019; Deniz Bahadir
+	- https://www.youtube.com/watch?v=y9kSr5enrSk
+	- https://github.com/Bagira80/More-Modern-CMake
+
+#### CMake Talks: 2018
+
+- Building C++
+	- C++ Edinburgh 2018; Morris Hafner
+	- https://www.youtube.com/watch?v=n_f-2p5eDBo
 - How to CMake Good
+	- 2018
 	- https://vector-of-bool.github.io/2018/08/12/cmake-good.html
 	- https://www.youtube.com/playlist?list=PLK6MXr8gasrGmIiSuVQXpfFuE1uPT615s
 - Introduction to CMake
@@ -567,17 +699,44 @@
 		- https://docs.google.com/presentation/d/1vIEfCE33-1BEMT1nNQQbhe-1va-3m2pL9c6_WrIIjdU/
 	- Video:
 		- https://www.youtube.com/watch?v=jt3meXdP-QI
-- Modern CMake for modular design
-	- Meeting C++ 2017; Mathieu Ropert
-	- https://www.youtube.com/watch?v=ztrnb-bVVPo
 - More Modern CMake - Working with CMake 3.12 and later
 	- Meeting C++ 2018; Deniz Bahadir
 	- https://meetingcpp.com/2018/Talks/items/More_Modern_CMake___Working_with_CMake_3_12_and_later.html
 	- https://meetingcpp.com/mcpp/slides/2018/MoreModernCMake.pdf
 	- https://www.youtube.com/watch?v=y7ndUhdQuU8
+
+#### CMake Talks: 2017
+
+- C++ Weekly - Jason Turner
+	- Ep 78 - Intro to CMake (2017)
+		- https://www.youtube.com/watch?v=HPMvU64RUTY
+		- https://github.com/lefticus/cpp_starter_project
+	- Ep 82 - Intro To CTest (2017)
+		- https://www.youtube.com/watch?v=ZlMbqFcJEzA
+- Effective CMake
+	- Daniel Pfeifer
+	- C++Now 2017
+		- https://www.youtube.com/watch?v=bsXLMQ6WgIk
+		- https://github.com/boostcon/cppnow_presentations_2017/raw/master/05-19-2017_friday/effective_cmake__daniel_pfeifer__cppnow_05-19-2017.pdf
+	- MUCplusplus 2017
+		- https://www.youtube.com/watch?v=rLopVhns4Zs
+- Effective dependency management with CMake
+	- MUCplusplus 2017; Kai Wolf
+	- https://www.youtube.com/watch?v=QayyhI-36os
+- Modern CMake for modular design
+	- Meeting C++ 2017; Mathieu Ropert
+	- https://www.youtube.com/watch?v=ztrnb-bVVPo
 - Using Modern CMake Patterns to Enforce a Good Modular Design
-	- CppCon 2017; Mathieu Ropert 
+	- CppCon 2017; Mathieu Ropert
 	- https://www.youtube.com/watch?v=eC9-iRN2b04
+
+## FASTBuild
+
+- FASTBuild
+	- a high performance, open-source build system for Windows, Linux, and OS X
+	- supports highly scalable compilation, caching and network distribution
+	- https://github.com/fastbuild/fastbuild
+	- https://www.fastbuild.org/
 
 ## Gradle
 
@@ -589,18 +748,18 @@
 
 - A more helpful makefile
 	- https://jakemccrary.com/blog/2018/12/27/a-more-helpful-makefile/
-- A Super-Simple Makefile for Medium-Sized C/C++ Projects 
+- A Super-Simple Makefile for Medium-Sized C/C++ Projects
 	- https://spin.atomicobject.com/2016/08/26/makefile-c-projects/
 - A Tutorial on Portable Makefiles
 	- http://nullprogram.com/blog/2017/08/20/
+- make help - Well documented Makefiles
+	- https://www.thapaliya.com/en/writings/well-documented-makefiles/
 - Makefile Tutorial
 	- https://gist.github.com/isaacs/62a2d1825d04437c6f08
 - Notes for new Make users
 	- http://gromnitsky.users.sourceforge.net/articles/notes-for-new-make-users/
 - Propositions as Filenames, Builds as Proofs: The Essence of Make
 	- https://bentnib.org/posts/2015-04-17-propositions-as-filenames-essence-of-make.html
-- Well documented Makefiles (available via `make help`)
-	- https://suva.sh/posts/well-documented-makefiles/
 
 ### GNU Make
 
@@ -628,12 +787,13 @@
 - GNU Make meets file names with spaces in them - https://www.cmcrossroads.com/article/gnu-make-meets-file-names-spaces-them
 - GNU Make Standard Library - http://gmsl.sourceforge.net/
 - HOWTO: Intro to GNU make variables - https://blog.melski.net/2015/01/07/howto-intro-to-gnu-make-variables/
-- Make is (probably) fine 
+- Make is (probably) fine
 	- https://blog.yossarian.net/2019/04/23/Make-is-probably-fine
 - Make it simple: An empirical analysis of GNU Make feature use in open source projects
 	- International Conference on Program Comprehension 2015
 	- Douglas H Martin, James R Cordy, Bram Adams, Giulio Antoniol
-	- http://maroon.cs.queensu.ca/home/cordy/Papers/MCAA_ICPC15_Makefiles.pdf
+	- https://doi.ieeecomputersociety.org/10.1109/ICPC.2015.31
+	- https://research.cs.queensu.ca/home/cordy/Papers/MCAA_ICPC15_Makefiles.pdf
 - Managing Projects with GNU Make
 	- http://www.wanderinghorse.net/computing/make/
 	- http://www.oreilly.com/openbook/make3/book/index.csp
@@ -671,6 +831,10 @@
 		- https://github.com/timniederhausen/gn-build
 - ninjatracing: Convert .ninja_log files to chrome's about:tracing format.
 	- https://github.com/nico/ninjatracing
+- The Architecture of Open Source Applications: Ninja
+	- https://www.aosabook.org/en/posa/ninja.html
+- The Success and Failure of Ninja
+	- http://neugierig.org/software/blog/2020/05/ninja.html
 
 ## Tundra
 
@@ -704,29 +868,36 @@
 
 ### MSBuild
 
-- MSBuild (Visual C++) - https://docs.microsoft.com/en-us/cpp/build/msbuild-visual-cpp 
+- MSBuild (Visual C++) - https://docs.microsoft.com/en-us/cpp/build/msbuild-visual-cpp
 - Make VC++ Compiles Fast Through Parallel Compilation
 	- https://randomascii.wordpress.com/2014/03/22/make-vc-compiles-fast-through-parallel-compilation/
+- Microsoft AnyBuild
+	- Remote build execution technology for use in MSBuild, Microsoft Build Accelerator, and other build engines
+	- https://github.com/microsoft/AnyBuild
 - Microsoft.Build (MSBuild)
 	- The Microsoft Build Engine: the build platform for .NET and Visual Studio
 	- https://github.com/Microsoft/msbuild
 	- https://docs.microsoft.com/en-us/visualstudio/msbuild/
 - MSBuild (Visual C++) - https://docs.microsoft.com/en-us/cpp/build/msbuild-visual-cpp
 - MSBuild Binary and Structured Log Viewer - http://msbuildlog.com/
+- MSBuildEditor
+	- The MSBuild Editor extension provides improved support for editing MSBuild files in Visual Studio and Visual Studio for Mac.
+	- https://github.com/mhutch/MonoDevelop.MSBuildEditor
 - Build Tools
 	- build native and managed MSBuild-based applications without requiring the Visual Studio IDE. There are options to install the Visual C++ compilers and libraries, MFC, ATL, and C++/CLI support, and .NET and .NET Core support.
 	- http://aka.ms/buildtools
 	- GoingNative 63: C++ Build Tools - https://channel9.msdn.com/Shows/C9-GoingNative/GoingNative-63-CPP-Build-Tools
 - Using A Custom Toolchain In Visual Studio With MSBuild
 	- http://www.reedbeta.com/blog/custom-toolchain-with-msbuild/
-- Visual Studio and Custom Build Rules 
+- Visual Studio and Custom Build Rules
 	- http://miken-1gam.blogspot.com/2013/01/visual-studio-and-custom-build-rules.html
 
 ## Xcode
 
 - xcbuild-debugging-tricks
-	- Xcode new build system debugging tricks 
+	- Xcode new build system debugging tricks
 	- https://gist.github.com/ddunbar/2dda0e836c855ea96759d1d05f086d69
+- https://XcodeBuildSettings.com
 
 ## xmake
 
@@ -745,7 +916,7 @@
 	- https://www.youtube.com/watch?v=34KzT2yvQuM
 	- https://github.com/CppCon/CppCon2019/tree/master/Presentations/behind_the_scenes_of_a_cpp_build_system
 - Building Modules
-	- CppCon 2019; Michael Spencer 
+	- CppCon 2019; Michael Spencer
 	- https://www.youtube.com/watch?v=L0SHHkBenss
 
 ## 2018
@@ -763,6 +934,15 @@
 - What to Expect from a Next-Generation C++ Build System
 	- CppCon 2018; Boris Kolpackov
 	- https://www.youtube.com/watch?v=cJP7SSLjvSI
+
+## 2016
+
+- A New Architecture for Building Software
+	- 2016 LLVM Developers’ Meeting; Daniel Dunbar
+	- https://www.youtube.com/watch?v=b_T-eCToX1I
+	- http://www.llvm.org/devmtg/2016-11/#talk10
+	- llbuild: A low-level build system, used by Xcode and the Swift Package Manager
+		- https://github.com/apple/swift-llbuild
 
 ## 2017
 

@@ -4,7 +4,7 @@
 
 * [Readings](#readings): [Blogs](#blogs-posts-and-series), [Documentation](#documentation), [Papers](#papers), [References](#references), [StackOverflow](#stackoverflow-questions)
 * [Software](#software): [Benchmarks](#benchmarks), [Libraries](#libraries), [Tools](#tools)
-* [Talks](#talks): [2019](#2019), [2018](#2018), [2017](#2017), [2016](#2016), [2015](#2015), [2014](#2014)
+* [Talks](#talks): [2020](#2020), [2019](#2019), [2018](#2018), [2017](#2017), [2016](#2016), [2015](#2015), [2014](#2014)
 
 ---
 
@@ -47,27 +47,44 @@
 	+ https://monoinfinito.wordpress.com/2013/07/25/c-exceptions-under-the-hood-appendix-iii-rtti-and-exceptions-orthogonality/
 * Simon Brand - Functional exceptionless error-handling with optional and expected
 	+ Demonstrates how to use `optional` and `expected` with monadic extensions.
-	+ https://blog.tartanllama.xyz/optional-expected/        
+	+ https://blog.tartanllama.xyz/optional-expected/
 * "Buckaroo" - Error Handling in C++ or: Why You Should Use Eithers in Favor of Exceptions and Error-codes
 	+ Presents some reasons to use Eithers (A.K.A. `std::expected`) instead of other alternatives.
 	+ https://hackernoon.com/error-handling-in-c-or-why-you-should-use-eithers-in-favor-of-exceptions-and-error-codes-f0640912eb45
+* Raymond Chen - The Old New Thing
+	- Decoding the parameters of a thrown C++ exception (0xE06D7363)
+		- https://devblogs.microsoft.com/oldnewthing/20100730-00/?p=13273
+	- Decoding the parameters of a thrown C++ exception (0xE06D7363), revisited
+		- https://devblogs.microsoft.com/oldnewthing/20160915-00/?p=94316
+	- Can I throw a C++ exception from a structured exception?
+		- https://devblogs.microsoft.com/oldnewthing/20170728-00/?p=96706
+	- The sad history of the C++ throw(…) exception specifier
+		- https://devblogs.microsoft.com/oldnewthing/20180928-00/?p=99855
+	- If you want to terminate on an unexpected exception, then don’t sniff at every exception; just let the process terminate
+		- https://devblogs.microsoft.com/oldnewthing/20191024-00/?p=103022
+	- How can I handle both structured exceptions and C++ exceptions potentially coming from the same source?
+		- https://devblogs.microsoft.com/oldnewthing/20200116-00/?p=103333
+	- How can I turn a structured exception into a C++ exception without having to use /EHa, if I can constrain exactly where the structured exception is coming from?
+		- https://devblogs.microsoft.com/oldnewthing/20200117-00/?p=103338
 * Stefan Gränitz - Series: Rich Recoverable Error Handling with llvm::Expected<T>
-	+ A series of posts demonstrating the motivation and use of `llvm::Expected`.
-	+ Part 1 - Motivation: https://weliveindetail.github.io/blog/post/2017/09/06/llvm-expected-basics.html
-	+ Part 2 - Differentiation: https://weliveindetail.github.io/blog/post/2017/10/22/llvm-expected-differentiation.html
-	+ Part 3 - All Helpers: https://weliveindetail.github.io/blog/post/2017/10/28/llvm-expected-helpers.html
+	+ Demonstrating the motivation and use of `llvm::Expected`.
+	+ https://weliveindetail.github.io/blog/post/2017/10/22/llvm-expected.html
+	+ https://github.com/weliveindetail/llvm-expected
 	+ Talk - C++ User Group Berlin 2017, September 19th: Rich Polymorphic Error Handling with llvm::Expected<T>
 		- Slides (PDF): https://github.com/weliveindetail/talks/raw/master/Expectify.pdf
 * Mike Hearn - What's wrong with exceptions? Nothing.
 	+ A defense of exceptions in general, but contains discussion on issues with C++'s implementation of them.
 	+ https://blog.plan99.net/what-s-wrong-with-exceptions-nothing-cee2ed0616
+* Stafford Horne
+	- Unwinding a Bug - How C++ Exceptions Work
+	- http://stffrdhrn.github.io/software/toolchain/openrisc/2020/12/13/cxx-exception-unwinding.html
 * Shane Kirk - C++ Exceptions: The Good, The Bad, And The Ugly
 	+ A discussion of the pros and cons of exceptions.
 	+ http://www.shanekirk.com/2015/06/c-exceptions-the-good-the-bad-and-the-ugly/
 * Boris Kolpackov
 	+ Throwing Destructors - https://www.kolpackov.net/projects/c++/eh/dtor-1.xhtml
 * Hyungjoon Koo (Kevin)
-	+ ELF Sections for Exception Handling - http://dandylife.net/blog/archives/686
+	+ ELF Sections for Exception Handling - https://dandylife.net/blog/archives/686
 * Andrzej Krzemieński
 	+ https://akrzemi1.wordpress.com/2011/09/21/destructors-that-throw/
 	+ https://akrzemi1.wordpress.com/2012/11/14/not-using-stdthread/
@@ -101,9 +118,17 @@
 * Edaqa Mortoray - The true cost of zero cost exceptions
 	+ Examines how exceptions are implemented in order to show some of the real costs of them.
 	+ https://mortoray.com/2013/09/12/the-true-cost-of-zero-cost-exceptions/
-* Jonathan Müller - Exceptions vs expected: Let's find a compromise
-	+ A look at finding a middle ground between exceptions and `std::expected` by examining what other languages provide.
-	+ http://foonathan.net/blog/2017/12/04/exceptions-vs-expected.html
+* Jonathan Müller
+	- Exceptions vs expected: Let's find a compromise
+		- A look at finding a middle ground between exceptions and `std::expected` by examining what other languages provide.
+		- https://foonathan.net/2017/12/exceptions-vs-expected/
+	- How to handle errors in constructors without exceptions?
+		- https://foonathan.net/2017/01/exceptions-constructor/
+	- Error Handling Series
+		- Part 1: Choosing the right error handling strategy - https://foonathan.net/2016/09/error-handling-strategy/
+		- Part 2: Flexible error handling techniques in C++ - https://foonathan.net/2016/06/flexible-error-handling/
+		- Part 3: How do I implement assertions? - https://foonathan.net/2016/09/assertions/
+		- Part 4: Prevent precondition errors with the C++ type system - https://foonathan.net/2016/09/error-handling-types/
 * Joseph M. Newcomer - Mythology in C++: Exceptions are Expensive
 	+ Microbenchmarks and assembly examinations to show that exceptions are not as expensive as many say.
 	+ http://www.flounder.com/exceptions.htm
@@ -123,16 +148,16 @@
 	+ Stack Frame Destruction - http://web.archive.org/web/20141208235529/http://theofilos.cs.columbia.edu/blog/2013/10/03/c-exception-handling-stack-frame-destruction/
 * Jeff Preshing - The Cost of Enabling Exception Handling
 	+ Uses microbenchmarking and assembly analysis to examine the effect of enabling exceptions.
-	+ http://preshing.com/20110807/the-cost-of-enabling-exception-handling/        
+	+ http://preshing.com/20110807/the-cost-of-enabling-exception-handling/
 * Vittorio Romeo - Why choose sum types over exceptions?
 	+ A case study of somewhere you might want to choose sum types over exceptions, along with some more general guidance.
-	+ https://vittorioromeo.info/index/blog/adts_over_exceptions.html        
+	+ https://vittorioromeo.info/index/blog/adts_over_exceptions.html
 * Patrice Roy - Exceptions in C++ and their Costs
 	+ A series of microbenchmarks looking at the tradeoffs between exceptions and error codes.
 	+ http://h-deb.clg.qc.ca/Sujets/Developpement/Exceptions-Costs.html
 * Herb Sutter - When and How to Use Exceptions
 	+ Guidelines on which cases to use exceptions for.
-	+ http://www.drdobbs.com/when-and-how-to-use-exceptions/184401836        
+	+ http://www.drdobbs.com/when-and-how-to-use-exceptions/184401836
 * Ian Lance Taylor
 	+ GCC Exception Frames - https://www.airs.com/blog/archives/166
 	+ Exception Destruction - https://www.airs.com/blog/archives/257
@@ -162,103 +187,150 @@
 
 ## Papers
 
-* A Study of the Applicability of Existing Exception-handling Techniques to Component-based Real-time Software Technology
-	+ ACM Transactions on Programming Languages and Systems (TOPLAS) 20(2) 1998
-	+ Jun Lang and David B. Stewart
-	+ https://doi.org/10.1145/276393.276395
-	+ http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.33.3400&rep=rep1&type=pdf
-* A Study on the Effects of Exception Usage in Open-Source C++ Systems
-	+ 2019 Master Thesis; Kirsten Bradley
-	+ http://hdl.handle.net/10012/14714
-* Automatically Detecting Error Handling Bugs Using Error Specifications
-	+ USENIX Security 2016
-	+ Suman Jana, Yuan Kang, Samuel Roth, Baishakhi Ray
-	+ https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/jana
-	+ EPEx: Error Path Exploration for Finding Error Handling Bugs - https://github.com/yujokang/EPEx
-* Automatically Diagnosing and Repairing Error Handling Bugs in C
-	+ ESEC/FSE 2017
-	+ Yuchi Tian, Baishakhi Ray
-	+ https://yuchi1989.github.io/papers/fse17-ErrDoc.pdf
-	+ ErrDoc: Tool for detecting, categorizing, and repairing error handling bugs - https://github.com/yuchi1989/ErrDoc/
-* C++ exception handling
-	+ IEEE Concurrency 8(4) 2000
-	+ Christophe De Dinechin
-	+ https://doi.org/10.1109/4434.895109
-* C++ Exception Handling for IA64
-	+ USENIX Workshop on Industrial Experiences with Systems Software (WIESS) 2000
-	+ Christophe de Dinechin
-	+ http://www.usenix.org/events/wiess2000/dinechin.html 
-* Effective Error-Specification Inference via Domain-Knowledge Expansion
-	+ ESEC/FSE 2019
-	+ Daniel DeFreez, Haaken Martinson Baldwin, Cindy Rubio-González, Aditya V. Thakur
-	+ https://dl.acm.org/citation.cfm?id=3338960
-	+ https://github.com/ucd-plse/eesi
-* Exception Handling: Issues and a Proposed Notation
-	+ Communications of the ACM (CACM) 18(12) 1975
-	+ John B. Goodenough
-	+ https://dl.acm.org/citation.cfm?id=361230
-* Exception-Safety in Generic Components: Lessons Learned from Specifying Exception-Safety for the C++ Standard Library
-	+ David Abrahams
-	+ https://www.boost.org/community/exception_safety.html
-	+ Error and Exception Handling - https://www.boost.org/community/error_handling.html
-* Exceptional Kernel: Using C++ Exceptions in the Linux Kernel
-	+ 2004
-	+ Halldór Ísak Gylfason, Gísli Hjálmtýsson
-	+ http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.100.7504
-	+ http://web.archive.org/http://netlab.ru.is/exception/KernelExceptions.pdf
-	+ C++ Exceptions & the Linux Kernel (2005)
+- A Study of the Applicability of Existing Exception-handling Techniques to Component-based Real-time Software Technology
+	- ACM Transactions on Programming Languages and Systems (TOPLAS) 20(2) 1998
+	- Jun Lang and David B. Stewart
+	- https://doi.org/10.1145/276393.276395
+	- http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.33.3400&rep=rep1&type=pdf
+- A Study on the Effects of Exception Usage in Open-Source C++ Systems
+	- 2019 Master Thesis; Kirsten Bradley
+		- http://hdl.handle.net/10012/14714
+	- Source Code Analysis and Manipulation (SCAM) 2019
+		- Kirsten Bradley and Mike Godfrey
+		- https://plg.uwaterloo.ca/~migod/papers/2019/scam19.pdf
+	- Zelda - Zee Exception Length and Destination Analyzer
+		- https://github.com/k10bradley/zelda
+- C++ exception handling
+	- IEEE Concurrency 8(4) 2000
+	- Christophe De Dinechin
+	- https://doi.org/10.1109/4434.895109
+- C++ Exception Handling for IA64
+	- USENIX Workshop on Industrial Experiences with Systems Software (WIESS) 2000
+	- Christophe de Dinechin
+	- http://www.usenix.org/events/wiess2000/dinechin.html
+- Exception Handling: Issues and a Proposed Notation
+	- Communications of the ACM (CACM) 18(12) 1975
+	- John B. Goodenough
+	- https://dl.acm.org/citation.cfm?id=361230
+- Exception-Safety in Generic Components: Lessons Learned from Specifying Exception-Safety for the C++ Standard Library
+	- David Abrahams
+	- https://www.boost.org/community/exception_safety.html
+	- Error and Exception Handling - https://www.boost.org/community/error_handling.html
+- Exceptional Kernel: Using C++ Exceptions in the Linux Kernel
+	- 2004
+	- Halldór Ísak Gylfason, Gísli Hjálmtýsson
+	- http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.100.7504
+	- http://web.archive.org/http://netlab.ru.is/exception/KernelExceptions.pdf
+	- C++ Exceptions & the Linux Kernel (2005)
 		- http://www.drdobbs.com/cpp/c-exceptions-the-linux-kernel/229100146
-* Generating Precise Error Specifications for C: A Zero Shot Learning Approach
-	+ SPLASH 2019 OOPSLA
-	+ Baijun Wu, John Peter Campora III, He Yi, Alexander Schlecht, Sheng Chen
-	+ https://dl.acm.org/citation.cfm?id=3360586
-	+ https://2019.splashcon.org/details/splash-2019-oopsla/44/Generating-Precise-Error-Specifications-for-C-A-Zero-Shot-Learning-Approach
-	+ https://bitbucket.org/plcacs/errorspec/src/master/
-* Interprocedural exception analysis for C++
-	+ ECOOP 2011
-	+ Prakash Prabhu, Naoto Maeda, Gogul Balakrishnan, Franjo Ivančić, Aarti Gupta
-	+ https://www.semanticscholar.org/paper/Interprocedural-Exception-Analysis-for-C%2B%2B-Prabhu-Maeda/0aa41227da8f2db0af3afc67f71b7d9ebc09fb8c
-	+ http://pages.cs.wisc.edu/~bgogul/Research/Papers/ecoop11.html
-* Low-cost Deterministic C++ Exceptions for Embedded Systems
-	+ Compiler Construction (CC) 2019
-	+ James Renwick, Tom Spink, Björn Frank
-	+ https://doi.org/10.1145/3302516.3307346
-	+ https://www.research.ed.ac.uk/portal/en/publications/lowcost-deterministic-c-exceptions-for-embedded-systems(2cfc59d5-fa95-45e0-83b2-46e51098cf1f).html
-* Model checking C++ programs with exceptions
-	+ Science of Computer Programming, Volume 128, 2016
-	+ P. Ročkai, J. Barnat, L. Brim
-	+ https://dl.acm.org/citation.cfm?id=2974473
-	+ http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.671.6441&rep=rep1&type=pdf
-	+ https://journal.ub.tu-berlin.de/eceasst/article/view/983
-	+ http://fmt.cs.utwente.nl/conferences/avocs2014/slides/slides.pdf
-* Optimizing away C++ exception handling
-	+ SIGPLAN Notices 33(8) 1998
-	+ Jonathan L. Schilling
-	+ https://dl.acm.org/citation.cfm?id=286390
-	+ http://www.ut.sco.com/developers/products/ehopt.pdf
-* Path-Based Function Embedding and Its Application to Error-Handling Specification Mining
-	+ European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE) 2018
-	+ Daniel DeFreez, Aditya V. Thakur, Cindy Rubio-González
-	+ https://doi.org/10.1145/3236024.3236059
-	+ http://web.cs.ucdavis.edu/~rubio/includes/fse18.pdf
-* Terse Exception Messages
-	+ Overload Journal #127, June 2015; Chris Oldwood
-	+ https://accu.org/index.php/journals/2110
-* The Use of C++ Exception Handling Constructs: A Comprehensive Study
-	+ Source Code Analysis and Manipulation (SCAM) 2015
-	+ Rodrigo Bonifacio, Fausto Carvalho, Guilherme N. Ramos, Uira Kulesza, Roberta Coelho
-	+ http://rbonifacio.net/papers/scam2015/rbonifacio-scam2015.pdf
-* Using Off-the-Shelf Exception Support Components in C++ Verification
-	+ Software Quality, Reliability and Security (QRS) 2017
-	+ Vladimír Štill, Petr Ročkai, Jiří Barnat
-	+ https://arxiv.org/pdf/1703.02394
-	+ https://divine.fi.muni.cz/2017/exceptions/
-* Zipr++: Exceptional Binary Rewriting
-	+ Forming an Ecosystem Around Software Transformation (FEAST) 2017
-	+ Jason Hiser, Anh Nguyen-Tuong, William Hawkins, Matthew McGill, Michele Co, Jack Davidson
-	+ https://dl.acm.org/citation.cfm?doid=3141235.3141240
-	+ https://tc.gtisc.gatech.edu/feast17/papers/p9-hiserA.pdf
-	+ Section 2.2 - EH Frame IR Construction - exception handling and stack unwinding information in Linux ELF executable files
+- Generating Precise Error Specifications for C: A Zero Shot Learning Approach
+	- SPLASH 2019 OOPSLA
+	- Baijun Wu, John Peter Campora III, He Yi, Alexander Schlecht, Sheng Chen
+	- https://dl.acm.org/citation.cfm?id=3360586
+	- https://2019.splashcon.org/details/splash-2019-oopsla/44/Generating-Precise-Error-Specifications-for-C-A-Zero-Shot-Learning-Approach
+	- https://bitbucket.org/plcacs/errorspec/src/master/
+- Interprocedural exception analysis for C++
+	- ECOOP 2011
+	- Prakash Prabhu, Naoto Maeda, Gogul Balakrishnan, Franjo Ivančić, Aarti Gupta
+	- https://www.semanticscholar.org/paper/Interprocedural-Exception-Analysis-for-C%2B%2B-Prabhu-Maeda/0aa41227da8f2db0af3afc67f71b7d9ebc09fb8c
+	- http://pages.cs.wisc.edu/~bgogul/Research/Papers/ecoop11.html
+- Low-cost Deterministic C++ Exceptions for Embedded Systems
+	- Compiler Construction (CC) 2019
+	- James Renwick, Tom Spink, Björn Frank
+	- https://doi.org/10.1145/3302516.3307346
+	- https://www.research.ed.ac.uk/portal/en/publications/lowcost-deterministic-c-exceptions-for-embedded-systems(2cfc59d5-fa95-45e0-83b2-46e51098cf1f).html
+- Model checking C++ programs with exceptions
+	- Science of Computer Programming, Volume 128, 2016
+	- P. Ročkai, J. Barnat, L. Brim
+	- https://dl.acm.org/citation.cfm?id=2974473
+	- http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.671.6441&rep=rep1&type=pdf
+	- https://journal.ub.tu-berlin.de/eceasst/article/view/983
+- On the Impact of Exception Handling Compatibility on Binary Instrumentation
+	- 2020 Workshop on Forming an Ecosystem Around Software Transformation (FEAST)
+	- Soumyakant Priyadarshan, Huan Nguyen, R. Sekar
+	- https://doi.org/10.1145/3411502.3418428
+	- http://seclab.cs.stonybrook.edu/seclab/pubs/feast20.pdf
+	- https://feastworkshop.github.io/2020/papers/ExHandling.pdf
+- Optimizing away C++ exception handling
+	- SIGPLAN Notices 33(8) 1998
+	- Jonathan L. Schilling
+	- https://dl.acm.org/citation.cfm?id=286390
+	- http://www.ut.sco.com/developers/products/ehopt.pdf
+- Path-Based Function Embedding and Its Application to Error-Handling Specification Mining
+	- European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE) 2018
+	- Daniel DeFreez, Aditya V. Thakur, Cindy Rubio-González
+	- https://doi.org/10.1145/3236024.3236059
+	- http://web.cs.ucdavis.edu/~rubio/includes/fse18.pdf
+- Terse Exception Messages
+	- Overload Journal #127, June 2015; Chris Oldwood
+	- https://accu.org/index.php/journals/2110
+- The Use of C++ Exception Handling Constructs: A Comprehensive Study
+	- Source Code Analysis and Manipulation (SCAM) 2015
+	- Rodrigo Bonifacio, Fausto Carvalho, Guilherme N. Ramos, Uira Kulesza, Roberta Coelho
+	- https://doi.org/10.1109/SCAM.2015.7335398
+	- https://web.archive.org/http://rbonifacio.net/papers/scam2015/rbonifacio-scam2015.pdf
+- Using Off-the-Shelf Exception Support Components in C++ Verification
+	- Software Quality, Reliability and Security (QRS) 2017
+	- Vladimír Štill, Petr Ročkai, Jiří Barnat
+	- https://arxiv.org/abs/1703.02394
+	- https://divine.fi.muni.cz/2017/exceptions/
+- Zipr++: Exceptional Binary Rewriting
+	- [Forming an Ecosystem Around Software Transformation (FEAST) 2017](https://www.sigsac.org/ccs/CCS2017/toc/FEASTToC.html)
+	- Jason Hiser, Anh Nguyen-Tuong, William Hawkins, Matthew McGill, Michele Co, Jack Davidson
+	- https://dl.acm.org/citation.cfm?doid=3141235.3141240
+	- https://tc.gtisc.gatech.edu/feast17/papers/p9-hiserA.pdf
+	- Section 2.2 - EH Frame IR Construction - exception handling and stack unwinding information in Linux ELF executable files
+
+### Papers: Correctness
+
+- APEx: Automated Inference of Error Specifications for C APIs
+	- Automated Software Engineering (ASE) 2016
+	- Yuan Jochen Kang, Baishakhi Ray, Suman Jana
+	- https://yujokang.github.io/papers/apex_2016.pdf
+	- APEx: Automated Tool for Generating Error Specifications
+		- https://github.com/yujokang/APEx
+- Ares: Inferring Error Specifications through Static Analysis
+	- Automated Software Engineering (ASE) 2019
+	- Li Chi, Zuxing Gu, Min Zhou, Ming Gu, Hongyu Zhang
+	- https://doi.org/10.1109/ASE.2019.00130
+	- https://www.youtube.com/watch?v=nf1QnFAmu8Q
+	- Ares: API Related Error Specification Inference
+		- https://github.com/lc3412/Ares
+- Automatically Detecting Error Handling Bugs Using Error Specifications
+	- USENIX Security 2016
+	- Suman Jana, Yuan Kang, Samuel Roth, Baishakhi Ray
+	- https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/jana
+	- EPEx: Error Path Exploration for Finding Error Handling Bugs - https://github.com/yujokang/EPEx
+- Automatically Diagnosing and Repairing Error Handling Bugs in C
+	- ESEC/FSE 2017
+	- Yuchi Tian, Baishakhi Ray
+	- https://yuchi1989.github.io/papers/fse17-ErrDoc.pdf
+	- ErrDoc: Tool for detecting, categorizing, and repairing error handling bugs - https://github.com/yuchi1989/ErrDoc/
+- Detecting Error-Handling Bugs without Error Specification Input
+	- Automated Software Engineering (ASE) 2019
+	- Zhouyang Jia, Shanshan Li, Tingting Yu, Xiangke Liao, Ji Wang, Xiaodong Liu, Yunhuai Liu
+	- https://doi.org/10.1109/ASE.2019.00029
+	- EH-Miner: Mining Error-Handling Bugs without Error Specification Input
+		- https://github.com/ZhouyangJia/EH-Miner
+- Effective Error-Specification Inference via Domain-Knowledge Expansion
+	- ESEC/FSE 2019
+	- Daniel DeFreez, Haaken Martinson Baldwin, Cindy Rubio-González, Aditya V. Thakur
+	- https://dl.acm.org/citation.cfm?id=3338960
+	- https://thakur.cs.ucdavis.edu/bibliography/defreez_rubio_thakur_FSE2019.html
+	- https://github.com/ucd-plse/eesi
+- Fuzzing Error Handling Code in Device Drivers Based on Software Fault Injection
+	- ISSRE 2019 - The 30th International Symposium on Software Reliability Engineering
+	- Zu-Ming Jiang, Jia-Ju Bai, Julia Lawall, Shi-Min Hu
+	- https://hal.inria.fr/hal-02389293/
+- Fuzzing Error Handling Code using Context-Sensitive Software Fault Injection
+	- USENIX Security 2020
+	- Zu-Ming Jiang, Jia-Ju Bai, Kangjie Lu, Shi-Min Hu
+	- https://www-users.cs.umn.edu/~kjlu/papers/fifuzz.pdf
+	- https://www.usenix.org/conference/usenixsecurity20/presentation/jiang
+- Testing Error Handling Code in Device Drivers Using Characteristic Fault Injection
+	- 2016 USENIX Annual Technical Conference
+	- Jia-Ju Bai, Yu-Ping Wang, Jie Yin, Shi-Min Hu
+	- https://www.usenix.org/node/196270
 
 ### WG21 - C++ Standards Committee Papers
 
@@ -266,7 +338,7 @@
 	+ 2015-11-07; Lawrence Crowl
 	+ https://wg21.link/P0157
 * P0364: Report on Exception Handling Lite (Disappointment) from SG14
-	+ 2016­05­23; Michael Wong, Sunil Srivastava, Sean Middleditch, Patrice Roy
+	+ 2016-05-23; Michael Wong, Sunil Srivastava, Sean Middleditch, Patrice Roy
 	+ http://wg21.link/P0364
 * P0709: Zero-overhead deterministic exceptions: Throwing values
 	+ 2018-05-02; Herb Sutter
@@ -330,23 +402,34 @@
 
 ## Libraries
 
-* Boost.Exception
-	+ https://github.com/boostorg/exception
-* cpp_exception_handling_abi
-	+ https://github.com/nicolasbrailo/cpp_exception_handling_abi
-* llvm-expected: LLVM's Rich Recoverable Error Handling as a Library
-	+ https://github.com/weliveindetail/llvm-expected
-	+ Benchmarks for llvm::Expected vs. std::error_code
+- Abseil Status
+	- https://abseil.io/blog/2020-091021-status
+	- https://github.com/abseil/abseil-cpp/tree/master/absl/status
+	- User Guide - https://abseil.io/docs/cpp/guides/status
+	- Choosing Canonical Error Codes - https://abseil.io/docs/cpp/guides/status-codes
+- Boost.Exception
+	- https://github.com/boostorg/exception
+- cpp_exception_handling_abi
+	- https://github.com/nicolasbrailo/cpp_exception_handling_abi
+- LEAF: Lightweight Error Augmentation Framework
+	- https://github.com/zajo/leaf
+	- https://github.com/zajo/leaf/blob/master/benchmark/benchmark.md
+- llvm-expected: LLVM's Rich Recoverable Error Handling as a Library
+	- https://github.com/weliveindetail/llvm-expected
+	- Benchmarks for llvm::Expected vs. std::error_code
 		- https://github.com/weliveindetail/BenchmarkLLVMExpected
-* Optional-lite, expected-lite, and optional-bare
-	+ https://github.com/martinmoene/optional-lite
-	+ https://github.com/martinmoene/expected-lite
-	+ https://github.com/martinmoene/optional-bare
-* Outcome
-	+ https://github.com/ned14/outcome
-* `tl::expected` and `tl::optional`
-	+ https://github.com/TartanLlama/expected
-	+ https://github.com/TartanLlama/optional
+- Optional-lite, expected-lite, and optional-bare
+	- https://github.com/martinmoene/optional-lite
+	- https://github.com/martinmoene/expected-lite
+	- https://github.com/martinmoene/optional-bare
+- Outcome
+	- https://github.com/ned14/outcome
+	- https://www.boost.org/doc/libs/release/libs/outcome
+- STX: C++ 20 error-handling and utility extensions
+	- https://github.com/lamarrr/STX
+- `tl::expected` and `tl::optional`
+	- https://github.com/TartanLlama/expected
+	- https://github.com/TartanLlama/optional
 
 ## Tools
 
@@ -356,10 +439,34 @@
 * EPEx: Error Path Exploration for Finding Error Handling Bugs
 	+ Tool for detecting error handling bugs
 	+ https://github.com/yujokang/EPEx
+* Zelda - Zee Exception Length and Destination Analyzer
+	- Open-source static analysis tool to track exception usage and flow through C++ code
+	- https://github.com/k10bradley/zelda
 
 ---
 
 # Talks
+
+## 2020
+
+- Back to Basics: Exceptions
+	- Klaus Iglberger
+	- Munich C++ User Group (MUC++) 2020
+		- https://www.youtube.com/watch?v=hBiDEGJxddU
+	- CppCon 2020
+		- https://www.youtube.com/watch?v=0ojB8c0xUd8
+		- https://github.com/CppCon/CppCon2020/tree/main/Presentations/back_to_basics_exceptions
+- Design Patterns for Handling/Reporting Errors in C++ - Parallel Algorithms & Executors
+	- CppCon 2020; Mark Hoemmen
+	- https://www.youtube.com/watch?v=DpLZ4pnrx0o
+	- https://github.com/CppCon/CppCon2020/blob/main/Presentations/design_patterns_for_error_handling/
+- Exceptions Under the Spotlight
+	- Inbal Levi
+	- Munich C++ User Group (MUC++) 2020
+		- https://www.youtube.com/watch?v=7mQBfl2K-5Y
+	- CppCon 2020
+		- https://www.youtube.com/watch?v=N_-bUNMLGvE
+		- https://github.com/CppCon/CppCon2020/tree/main/Presentations/exceptions_under_the_spotlight
 
 ## 2019
 
@@ -373,7 +480,7 @@
 * Don't write exception classes, declare exception types
 	+ SwedenCpp 2019; Harald Achitz
 	+ https://www.youtube.com/watch?v=EGJAisKmUvU
-	+ https://a4z.bitbucket.io/presentations/cpp2/errtypes/ 
+	+ https://a4z.bitbucket.io/presentations/cpp2/errtypes/
 * Error Handling is Cancelling Operations
 	+ CppCon 2019; Andrzej Krzemieński
 	+ https://www.youtube.com/watch?v=zte8IxkHqc4
@@ -426,7 +533,7 @@
 	+ CppCon 2018; James McNellis
 	+ https://www.youtube.com/watch?v=COEv2kq_Ht8
 	+ ‏https://1drv.ms/b/s!AoyrqeD9L48NknYwKYcWS0diFlRb
-	+ https://github.com/CppCon/CppCon2018/tree/master/Presentations/Unwinding%20the%20Stack%20-%20Exploring%20How%20C%2B%2B%20Exceptions%20Work%20on%20Windows
+	+ <https://github.com/CppCon/CppCon2018/tree/master/Presentations/unwinding_the_stack_exploring_how_cpp_exceptions_work_on_windows>
 * What Could Possibly Go Wrong?: A Tale of Expectations and Exceptions
 	+ CppCon 2018; Brand & Nash
 	+ https://www.youtube.com/watch?v=GC4cp4U2f2E

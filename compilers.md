@@ -3,13 +3,16 @@
 See also:
 
 - [Assembly (Arm)](assembly.arm.md), [Assembly (RISC-V)](assembly.riscv.md), [Assembly (x86)](assembly.x86.md)
-- [compilers correctness](compilers.correctness.md)
-- [program analysis](https://gist.github.com/MattPD/00573ee14bf85ccac6bed3c0678ddbef) - [LLVM](https://gist.github.com/MattPD/00573ee14bf85ccac6bed3c0678ddbef#llvm)
+- [Compilers Correctness](compilers.correctness.md)
 - [Debugging](https://github.com/MattPD/cpplinks/blob/master/debugging.md): [Implementation](https://github.com/MattPD/cpplinks/blob/master/debugging.md#implementation)
+- [Program Analysis](https://gist.github.com/MattPD/00573ee14bf85ccac6bed3c0678ddbef) - [LLVM](https://gist.github.com/MattPD/00573ee14bf85ccac6bed3c0678ddbef#llvm)
+- [Linking and Loading](https://github.com/MattPD/cpplinks/blob/master/executables.linking_loading.md) 
 
 # Background
 
 - https://github.com/aalhour/awesome-compilers
+- A Compiler Writing Journey
+	- https://github.com/DoctorWkt/acwj
 - An Incremental Approach to Compiler Construction
 	- Scheme and Functional Programming 2006; Abdulaziz Ghuloum
 	- http://scheme2006.cs.uchicago.edu/11-ghuloum.pdf
@@ -82,44 +85,54 @@ See also:
 
 # Conferences
 
-Compilers Call For Papers for Conferences, Workshops and Journals at WikiCFP - http://www.wikicfp.com/cfp/call?conference=compilers  
-Computer Architecture and Compilers Conference Map - http://archconfmap.com/
+Compilers Call For Papers for Conferences, Workshops and Journals at WikiCFP - http://www.wikicfp.com/cfp/call?conference=compilers
 
-- ASPLOS: International Conference on Architectural Support for Programming Languages and Operating Systems - http://dblp.uni-trier.de/db/conf/asplos/
+- ASPLOS: International Conference on Architectural Support for Programming Languages and Operating Systems - https://asplos-conference.org/ - http://dblp.uni-trier.de/db/conf/asplos/
 - CASES: Compilers, Architecture, and Synthesis for Embedded Systems - http://www.esweek.org/cases - http://dblp.uni-trier.de/db/conf/cases/
 - CC: The International Conference on Compiler Construction - http://conf.researchr.org/series/CC - http://dblp.uni-trier.de/db/conf/cc/
 - CGO: International Symposium on Code Generation and Optimization - http://cgo.org/ - http://dblp.uni-trier.de/db/conf/cgo/
-- HPCA: International Symposium on High-Performance Computer Architecture - http://www.hpcaconf.org/ - http://dblp.uni-trier.de/db/conf/hpca/
+- HPCA: International Symposium on High-Performance Computer Architecture - https://www.hpca-conf.org/ - http://dblp.uni-trier.de/db/conf/hpca/
 - ICFP: International Conference on Functional Programming - http://icfpconference.org/ - http://dblp.uni-trier.de/db/conf/icfp/
 - ISMM: International Symposium on Memory Management - http://www.sigplan.org/Conferences/ISMM/ - http://dblp.uni-trier.de/db/conf/iwmm/
-- LCTES: Languages, Compilers, and Tools for Embedded Systems - http://lctes.org/ - http://dblp.uni-trier.de/db/conf/lctrts/
-- OOPSLA: Object-Oriented Programming Systems, Languages and Applications - http://www.sigplan.org/Conferences/OOPSLA/ - http://dblp.uni-trier.de/db/conf/oopsla/
+- LCTES: Languages, Compilers, and Tools for Embedded Systems - https://conf.researchr.org/series/LCTES - http://dblp.uni-trier.de/db/conf/lctrts/
+- OOPSLA: Object-Oriented Programming Systems, Languages and Applications - http://www.sigplan.org/Conferences/OOPSLA/ - http://www.oopsla.org/ - http://dblp.uni-trier.de/db/conf/oopsla/
 - PACT: International Conference on Parallel Architecture and Compilation - http://pactconf.org/ - http://dblp.uni-trier.de/db/conf/IEEEpact/
 - PLDI: Programming Language Design and Implementation - http://www.sigplan.org/Conferences/PLDI/ - http://dblp.uni-trier.de/db/conf/pldi/
 - POPL: Principles of Programming Languages - http://www.sigplan.org/Conferences/POPL/ - http://dblp.uni-trier.de/db/conf/popl/
 - PPoPP: ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming - http://www.sigplan.org/Conferences/PPOPP/ - http://dblp.uni-trier.de/db/conf/ppopp/
 - SAS: International Static Analysis Symposium - http://www.staticanalysis.org/ - http://dblp.uni-trier.de/db/conf/sas/
-- SCOPES: International Workshop on Software and Compilers for Embedded Systems - http://www.scopesconf.org/ - http://dblp.uni-trier.de/db/conf/scopes/
+- SCOPES: International Workshop on Software and Compilers for Embedded Systems - https://scopesconf.org/ - http://dblp.uni-trier.de/db/conf/scopes/
 
 # Courses
 
-- Stanford OpenEdX: Compilers - Alex Aiken
-	- http://online.stanford.edu/course/compilers-0
-- University of Utah: Advanced Compilers - John Regehr
-	- Weeks 1 and 2: http://blog.regehr.org/archives/1419
-	- Weeks 3-5: http://blog.regehr.org/archives/1428
-- UW CSE CSEP 501: Compilers - Hal Perkins
-	- https://courses.cs.washington.edu/courses/csep501/
-	- Winter 2018
-		- Homepage: https://courses.cs.washington.edu/courses/csep501/18sp/
-		- Lecture Videos: https://courses.cs.washington.edu/courses/csep501/18sp/video/
-	- Winter 2016
-		- Homepage: https://courses.cs.washington.edu/courses/csep501/16wi/
-		- Playlist: https://www.youtube.com/playlist?list=PLTPQEx-31JXhfAWGnGzwbfhB2zUB7Jd4C
-		- Topics: https://courses.cs.washington.edu/courses/csep501/16wi/calendar/lecturelist.html
+- Cornell CS 6120: Advanced Compilers
+	- Fall 2020; Adrian Sampson
+		- The Self-Guided Online Course: https://www.cs.cornell.edu/courses/cs6120/2020fa/self-guided/
+		- https://www.cs.cornell.edu/courses/cs6120/2020fa/
+		- source code: https://github.com/sampsyo/cs6120
+		- lectures: https://www.cs.cornell.edu/courses/cs6120/2020fa/lesson/
+			- https://vod.video.cornell.edu/channel/CS%2B6120/179754792
+			- https://cornell.app.box.com/s/wb3387ebfbte9btx3weekmc8nij5glep
+- IU P423/P523: Compilers (Programming Language Implementation)
+	- Fall 2020; Jeremy Siek 
+	- https://iucompilercourse.github.io/IU-P423-P523-E313-E513-Fall-2020/
+	- https://github.com/IUCompilerCourse/IU-P423-P523-E313-E513-Fall-2020
+	- https://github.com/IUCompilerCourse/Essentials-of-Compilation
+- KAIST CS420: Compiler Design
+	- Spring 2020; Jeehoon Kang
+		- https://github.com/kaist-cp/cs420
+		- https://www.youtube.com/playlist?list=PL5aMzERQ_OZ8RWqn-XiZLXm1IJuaQbXp0
+	- KECC: KAIST Educational C Compiler
+		- https://github.com/kaist-cp/kecc-public
+- NPTEL: Compiler Design
+	- 2011; Y.N. Srikant
+		- https://nptel.ac.in/courses/106108052/
+		- https://www.youtube.com/playlist?list=PL3690D679B876DE6A
 - SFU CMPT 886: Program Analysis and Reliability - Nick Sumner, Spring 2015
 	- Playlist: https://www.youtube.com/playlist?list=PLNC6lmsIySCOPjY8IwKBtD2cqe-MMgIGM
 	- Schedule & Slides: http://www.cs.sfu.ca/~wsumner/teaching/886/15/schedule.html
+- Stanford OpenEdX: Compilers - Alex Aiken
+	- http://online.stanford.edu/course/compilers-0
 - UCB CS294-113: Virtual Machines and Managed Runtimes
 	- http://www.wolczko.com/CS294/
 	- A Concise and Opinionated History of Virtual Machines
@@ -137,6 +150,22 @@ Computer Architecture and Compilers Conference Map - http://archconfmap.com/
 	- Winter 2019; Sorin Lerner
 		- https://podcast.ucsd.edu/watch/wi19/cse231_a00
 		- https://ucsd-pl.github.io/cse231/wi19/
+- UFMG DCC888: Static Program Analysis
+	- 2020; Fernando Magno Quintão Pereira
+	- https://homepages.dcc.ufmg.br/~fernando/classes/dcc888/
+	- https://www.youtube.com/playlist?list=PLC-dUCVQghfdu7AG5f_p4oRyKgjDuoAWU
+- University of Utah: Advanced Compilers - John Regehr
+	- Weeks 1 and 2: http://blog.regehr.org/archives/1419
+	- Weeks 3-5: http://blog.regehr.org/archives/1428
+- UW CSE CSEP 501: Compilers - Hal Perkins
+	- https://courses.cs.washington.edu/courses/csep501/
+	- Winter 2018
+		- Homepage: https://courses.cs.washington.edu/courses/csep501/18sp/
+		- Lecture Videos: https://courses.cs.washington.edu/courses/csep501/18sp/video/
+	- Winter 2016
+		- Homepage: https://courses.cs.washington.edu/courses/csep501/16wi/
+		- Playlist: https://www.youtube.com/playlist?list=PLTPQEx-31JXhfAWGnGzwbfhB2zUB7Jd4C
+		- Topics: https://courses.cs.washington.edu/courses/csep501/16wi/calendar/lecturelist.html
 
 # Implementations
 
@@ -189,22 +218,10 @@ Computer Architecture and Compilers Conference Map - http://archconfmap.com/
 
 # Linking and Loading
 
-- Advanced C and C++ Compiling by Milan Stevanovic​ (2014)
-	- "Engineering guide to C/C++ compiling, linking, and binary files structure"
-	- http://www.apress.com/9781430266679
-	- http://link.springer.com/book/10.1007%2F978-1-4302-6668-6
-	- https://github.com/apress/adv-c-cpp-compiling
-- An Evil Copy: How the Loader Betrays You - https://nebelwelt.net/publications/files/17NDSS.pdf
-- How To Write Shared Libraries - Ulrich Drepper - https://www.akkadia.org/drepper/dsohowto.pdf
-- Linkers - 20 part linker essay by Ian Lance Taylor - https://lwn.net/Articles/276782/
-- Linkers and Loaders by John R. Levine (1999) - https://www.iecc.com/linker/
-- Nick Desaulniers' posts
-	- Part 1 – Object Files and Symbols - http://nickdesaulniers.github.io/blog/2016/08/13/object-files-and-symbols/
-	- Part 2 – Static and Dynamic Libraries - http://nickdesaulniers.github.io/blog/2016/11/20/static-and-dynamic-libraries/
-- The missing link: explaining ELF static linking, semantically - Stephen Kell, Dominic P. Mulligan, Peter Sewell - OOPSLA 2016
-	- http://www.cl.cam.ac.uk/~pes20/rems/papers/oopsla-elf-linking-2016.pdf
-	- https://bitbucket.org/Peter_Sewell/linksem/
-- Understanding the classical model for linking - Raymond Chen - https://blogs.msdn.microsoft.com/oldnewthing/tag/linker
+See:
+
+- [Executables](executables.md) - executable & object file formats ([DLL](https://github.com/MattPD/cpplinks/blob/master/executables.md#dll), [ELF](https://github.com/MattPD/cpplinks/blob/master/executables.md#elf), [Mach-O](https://github.com/MattPD/cpplinks/blob/master/executables.md#mach-o), [PE](https://github.com/MattPD/cpplinks/blob/master/executables.md#pe)); debugging data formats ([DWARF](https://github.com/MattPD/cpplinks/blob/master/executables.md#dwarf), [PDB](https://github.com/MattPD/cpplinks/blob/master/executables.md#pdb-program-database))
+	- [Linking and Loading](https://github.com/MattPD/cpplinks/blob/master/executables.linking_loading.md) 
 
 # Optimization
 

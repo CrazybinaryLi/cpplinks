@@ -4,6 +4,9 @@ A categorized list of C++ resources.
 
 ## Categories
 
+- Analysis - program analysis
+  - [Dynamic analysis](analysis.dynamic.md) - instrumentation, translation, sanitizers
+  - [Static analysis](analysis.static.md) - static analysis (static checkers and compilers) and verification
 - Assembly
   - [ARM](assembly.arm.md) - ARM and AArch64
   - [RISC-V](assembly.riscv.md)
@@ -21,13 +24,16 @@ A categorized list of C++ resources.
 - [Debugging](debugging.md) - [readings](debugging.md#readings) (articles, documentation - implementation & use), [software](debugging.md#software) ([GDB](debugging.md#gdb), [LLDB](debugging.md#lldb), [RR](debugging.md#rr), [WinDbg](debugging.md#windbg); [stack trace & unwinding](debugging.md#stack-trace--unwinding)), [talks](debugging.md#talks-2)
 - [Debugging - tracing](https://github.com/MattPD/cpplinks/blob/master/debugging.tracing.md): [readings](https://github.com/MattPD/cpplinks/blob/master/debugging.tracing.md#readings); [software](https://github.com/MattPD/cpplinks/blob/master/debugging.tracing.md#software); [talks](https://github.com/MattPD/cpplinks/blob/master/debugging.tracing.md#talks)
 - [Error handling](error_handling.md)
-- [Executables](executables.md) - executable & object file formats ([ELF](executables.md#elf), [Mach-O](executables.md#mach-o), [PE](executables.md#pe)); debugging data formats ([DWARF](executables.md#dwarf), [PDB](executables.md#pdb-program-database))
+- [Executables](executables.md) - executable & object file formats ([DLL](executables.md#dll), [ELF](executables.md#elf), [Mach-O](executables.md#mach-o), [PE](executables.md#pe)); debugging data formats ([DWARF](executables.md#dwarf), [PDB](executables.md#pdb-program-database))
+  - [Linking and Loading](executables.linking_loading.md) - linkers, loaders, libraries
 - Interoperability
   - [FFI](interoperability.ffi.md) - foreign function interfaces (FFIs)
   - [portability](interoperability.portability.md) - [general (libraries)](interoperability.portability.md#general), [ABI](interoperability.portability.md#abi), [name mangling](interoperability.portability.md#name-mangling) 
 - [Learning and teaching](learning_teaching.md)
 - [Performance tools](performance.tools.md)
-- [Standardization](std.md)
+- [Standard & standardization](std.md)
+- [Testing](testing.md)
+  - [Fuzzing](https://github.com/MattPD/cpplinks/blob/master/testing.fuzzing.md)
 
 ## About
 

@@ -1,16 +1,20 @@
 # [C++ links](README.md): compilers - correctness
 
-See also: [compilers](compilers.md)
+See also:
+
+- [Compilers](compilers.md)
+- [Debugging](https://github.com/MattPD/cpplinks/blob/master/debugging.md): [Implementation](https://github.com/MattPD/cpplinks/blob/master/debugging.md#implementation): [Correctness](https://github.com/MattPD/cpplinks/blob/master/debugging.md#correctness)
 
 # Contents
 
 - [General](#general)
+	- [Debugging](#debugging)
 	- [History](#history)
 	- [Lectures](#lectures)
 - [Testing](#testing)
-	- [Readings](#readings)
-	- [Software](#software)
-	- [Talks](#talks)
+	- [Readings](#testing-readings): [Performance Optimization](#testing-readings-performance-optimization), [Reduction](#testing-readings-reduction): [LLVM](#testing-readings-reduction-llvm)
+	- [Software](#testing-software): [Generation](#testing-software-generation), [Performance Optimization](#testing-software-performance-optimization), [Reduction](#testing-software-reduction)
+	- [Talks](#testing-talks)
 - [Validation](#validation)
 - [Verification](#verification)
 
@@ -27,7 +31,7 @@ See also: [compilers](compilers.md)
 	- Patrick Bahr and Graham Hutton
 	- http://www.cs.nott.ac.uk/~pszgmh/bib.html#ccc
 - Calculating Correct Compilers II: Return of the Register Machines
-	- September 2019
+	- Journal of Functional Programming 2020
 	- Patrick Bahr and Graham Hutton
 	- http://www.cs.nott.ac.uk/~pszgmh/bib.html#ccc2
 - Compiling with Proofs
@@ -62,14 +66,60 @@ See also: [compilers](compilers.md)
 
 ## Debugging
 
+Debugging of compilers bugs
+
+See also: Section 6.3 (Compiler Bug Debugging) in ["A Survey of Compiler Testing"](https://software-lab.org/publications/csur2019_compiler_testing.pdf); [Compilers Correctness](https://github.com/MattPD/cpplinks/blob/master/compilers.correctness.md): [Testing](https://github.com/MattPD/cpplinks/blob/master/compilers.correctness.md#testing): [Reduction](https://github.com/MattPD/cpplinks/blob/master/compilers.correctness.md#testing-readings-reduction); [Debugging](https://github.com/MattPD/cpplinks/blob/master/debugging.md): [Readings](https://github.com/MattPD/cpplinks/blob/master/debugging.md#readings): Delta Debugging
+
 - Automatic Isolation of Compiler Errors
 	- ACM Transactions on Programming Languages and Systems (TOPLAS) 16(5) 1994
 	- David Whalley
 	- https://www.cs.fsu.edu/~whalley/papers/acmtoplas94.pdf
+- Bugfind: A Tool for Debugging Optimizing Compilers
+	- ACM SIGPLAN Notices 25, no. 1 (1990)
+	- Jacqueline M. Caron, Peter A. Darnell
+	- https://doi.org/10.1145/74105.74106
+- Compiler Bug Isolation via Effective Witness Test Program Generation
+	- ESEC/FSE 2019
+	- Junjie Chen, Jiaqi Han, Peiyi Sun, Lingming Zhang, Dan Hao, Lu Zhang
+	- https://dl.acm.org/citation.cfm?id=3338957
+	- https://personal.utdallas.edu/~lxz144130/publications/fse2019.pdf
+	- DiWi (Diversified Witnesses)
+		- https://github.com/JunjieChen/DiWi
 - Debugging compilers with optimization fuel
 	- 2011
 	- Edward Z. Yang
 	- http://blog.ezyang.com/2011/06/debugging-compilers-with-optimization-fuel/
+- Enhanced Compiler Bug Isolation via Memoized Search
+	- ASE 2020
+	- Junjie Chen, Haoyang Ma, Lingming Zhang
+	- https://www.youtube.com/watch?v=G8Ev6hujI6g
+	- https://lingming.cs.illinois.edu/publications/ase2020b.pdf
+	- https://conf.researchr.org/details/ase-2020/ase-2020-papers/36/Enhanced-Compiler-Bug-Isolation-via-Memoized-Search
+	- RecBi: Reinforcement compiler Bug isolation
+		- https://github.com/haoyang9804/RecBi
+- GCC Wiki: Finding miscompilations on large testcases
+	- https://gcc.gnu.org/wiki/Analysing_Large_Testcases
+- Locating a compiler bug with git bisection
+	- 2020; William Woodruff
+	- https://blog.yossarian.net/2020/05/07/Locating-a-compiler-bug-with-git-bisection
+- Replay Compilation: Improving Debuggability of a Just-in-Time Compiler
+	- OOPSLA 2006
+	- Kazunori Ogata, Tamiya Onodera, Kiyokuni Kawachiya, Hideaki Komatsu, Toshio Nakatani
+	- https://doi.org/10.1145/1167473.1167493
+	- https://www.researchgate.net/publication/221321785_Replay_compilation_Improving_debuggability_of_a_just-in-time_compiler
+- Toward Automatic Debugging of Compilers
+	- International Joint Conference on Artificial Intelligence 1977
+	- Hanan Samet
+	- http://www.cs.umd.edu/~hjs/pubs/compilers/toward-automatic-debugging.pdf
+- Type-Based Verification of Assembly Language for Compiler Debugging
+	- ACM SIGPLAN Workshop on Types in Language Design and Implementation (TLDI) 2005
+	- Bor-Yuh Evan Chang, Adam Chlipala, George C. Necula, Robert R. Schneck
+	- http://adam.chlipala.net/papers/CoolaidTLDI05/
+- Using Mutants to Help Developers Distinguish and Debug (Compiler) Faults
+	- Journal of Software Testing, Verification, and Reliability (STVR) Volume 30, Issue 2 (2020)
+	- Josie Holmes and Alex Groce
+	- https://agroce.github.io/stvr20.pdf
+	- https://github.com/agroce/compilermutants
 
 ## History
 
@@ -81,7 +131,8 @@ See also: [compilers](compilers.md)
 	- ACM SIGSOFT Software Engineering Notes 28(6) 2003
 	- Maulik A. Dave
 	- https://dl.acm.org/citation.cfm?id=966235
-	- http://www.cs.utah.edu/~skchoe/research/p2-dave.pdf
+	- https://web.archive.org/http://www.cs.utah.edu/~skchoe/research/p2-dave.pdf
+	- https://www.semanticscholar.org/paper/Compiler-verification%3A-a-bibliography-Dave/36e028f88fc56eaf919b6d96c7a087c102ad4569
 	- Compiler Verification: A Brief History - http://web.archive.org/web/20090807085152/http://www.geocities.com/compiler00/dave1.html
 - Correctness of a Compiler for Algol-like Programs
 	- Stanford Artificial Intelligence Memo No. 48 (1967)
@@ -109,16 +160,16 @@ See also: [compilers](compilers.md)
 		- Correct and Secure Compilation for Multi-Language Software - Amal Ahmed
 			- https://www.youtube.com/playlist?list=PL0DsGHMPLUWUSJ8_THYt6Jcu7Kgp2kjaP
 	- 2016 - https://www.cs.uoregon.edu/research/summerschool/summer16/curriculum.php
-		- Logical relations/Compiler verification - Amal Ahmed 
+		- Logical relations/Compiler verification - Amal Ahmed
 			- https://www.youtube.com/playlist?list=PLiHLLF-foEexzqkMlTqzbbX_7V45MAXyX
 	- 2015 - https://www.cs.uoregon.edu/research/summerschool/summer15/curriculum.html
-		- Logical Relations - Amal Ahmed 
+		- Logical Relations - Amal Ahmed
 			- https://www.youtube.com/playlist?list=PLiHLLF-foEex7BOvMbrbUFC9XgU7fZW66
 	- 2014 - https://www.cs.uoregon.edu/research/summerschool/summer14/curriculum.html
 		- Software Verification - Andrew Appel
 	- 2013 - https://www.cs.uoregon.edu/research/summerschool/summer13/curriculum.html
 		- Logical Relations - Amal Ahmed
-		- Verifying LLVM Optimizations in Coq - Steve Zdancewic 
+		- Verifying LLVM Optimizations in Coq - Steve Zdancewic
 	- 2012 - https://www.cs.uoregon.edu/research/summerschool/summer12/curriculum.html
 		- Logical Relations - Amal Ahmed
 		- Compiler verification - Xavier Leroy
@@ -127,6 +178,8 @@ See also: [compilers](compilers.md)
 
 # Testing
 
+See also: [Testing](https://github.com/MattPD/cpplinks/blob/master/testing.md)
+
 - A Survey of Compiler Testing
 	- ACM Computing Surveys (CSUR) 2019
 	- Junjie Chen, Jibesh Patra, Michael Pradel, Yingfei Xiong, Hongyu Zhang, Dan Hao, Lu Zhang
@@ -134,10 +187,9 @@ See also: [compilers](compilers.md)
 - Dagstuhl Seminar 17502 – Testing and Verification of Compilers
 	- December 2017
 	- http://dagstuhl.de/17502
-	- Materials: http://materials.dagstuhl.de/index.php?semnr=17502
 - EMI-based Compiler Testing - http://web.cs.ucdavis.edu/~su/emi-project/
 
-## Readings
+## Testing: Readings
 
 - An empirical comparison of compiler testing techniques
 	- International Conference on Software Engineering (ICSE 2016)
@@ -146,12 +198,6 @@ See also: [compilers](compilers.md)
 	- http://emponcc.github.io/
 	- https://github.com/emponcc/emponcc.github.io/blob/master/CompilerTestingComparison.md
 	- https://dl.acm.org/citation.cfm?id=2884878
-- Automatic Test Case Reduction for OpenCL
-	- IWOCL 2016
-	- Moritz Pflanzer, Alastair F. Donaldson, Andrei Lascu
-	- https://dl.acm.org/citation.cfm?id=2909439
-	- paper: https://spiral.imperial.ac.uk/handle/10044/1/39576
-	- slides: http://www.iwocl.org/wp-content/uploads/iwocl-2016-automatic-test-case-reduction.pdf
 - Automated Testing of Graphics Shader Compilers
 	- SPLASH 2017 OOPSLA
 	- Alastair F. Donaldson, Hugues Evrard, Andrei Lascu, Paul Thomson
@@ -166,17 +212,11 @@ See also: [compilers](compilers.md)
 	- IEEE International Symposium on Software Reliability Engineering (ISSRE) 2018
 	- Josie Holmes and Alex Groce
 	- https://agroce.github.io/issre18.pdf
-- Checking Correctness of Code Generator Architecture Specifications 
+- Checking Correctness of Code Generator Architecture Specifications
 	- Code Generation and Optimization (CGO) 2015
-	- N. Hasabnis, R. Qiao, R. Sekar 
+	- N. Hasabnis, R. Qiao, R. Sekar
 	- http://www3.cs.stonybrook.edu/~nhasabni/papers/cgo15.pdf
 	- http://www3.cs.stonybrook.edu/~nhasabni/papers/cgo15_talk.pdf
-- Compiler Bug Isolation via Effective Witness Test Program Generation
-	- ESEC/FSE 2019 
-	- Junjie Chen, Jiaqi Han, Peiyi Sun, Lingming Zhang, Dan Hao, Lu Zhang
-	- https://dl.acm.org/citation.cfm?id=3338957
-	- DiWi (Diversified Witnesses)
-		- https://github.com/JunjieChen/DiWi
 - Compiler fuzzing, part 1
 	- http://www.vegardno.net/2018/06/compiler-fuzzing.html
 - Compiler Fuzzing through Deep Learning
@@ -188,11 +228,14 @@ See also: [compilers](compilers.md)
 	- OOPSLA 2019
 	- Michael Marcozzi, Qiyi Tang, Alastair Donaldson, Cristian Cadar
 	- https://srg.doc.ic.ac.uk/projects/compiler-bugs/
-	- https://sites.google.com/view/michaelmarcozzi/software-tools/compiler-bugs-impact
+	- https://sites.google.com/view/michaelmarcozzi/software/compiler-bugs-impact
 	- A Systematic Impact Study for Fuzzer-Found Compiler Bugs
 		- 2019 arXiv (pre-print)
 		- https://arxiv.org/abs/1902.09334
 		- https://sites.google.com/view/michaelmarcozzi/compiler-bugs
+	- PapersWeLove London 2020
+		- Michael Marcozzi
+		- https://www.youtube.com/watch?v=CUBmXYahTb0
 - Coverage Prediction for Accelerating Compiler Testing
 	- IEEE Transactions on Software Engineering (2019)
 	- Junjie Chen, Guancheng Wang, Dan Hao, Yingfei Xiong, Hongyu Zhang, Lu Zhang, Bing Xie
@@ -254,8 +297,7 @@ See also: [compilers](compilers.md)
 	- https://xiongyingfei.github.io/publications.html#ASE19b
 - Improving the Utility of Compiler Fuzzers
 	- 2014 Ph.D. Dissertation; Yang Chen
-	- http://www.cs.utah.edu/~chenyang/papers/thesis_draft.pdf
-	- https://search.proquest.com/openview/4799de27b7f7d50c7d4f1d2335316065/1?pq-origsite=gscholar&cbl=18750&diss=y
+	- https://collections.lib.utah.edu/details?id=196364
 - K-CONFIG: Using Failing Test Cases to Generate Test Cases in GCC Compilers
 	- Automated Software Engineering (ASE 2019) Late Breaking Research-Track
 	- Md Rafiqul Islam Rabin, Mohammad Amin Alipour
@@ -279,25 +321,63 @@ See also: [compilers](compilers.md)
 	- SCALA 2016
 	- Georg Ofenbeck, Tiark Rompf, Markus Püschel
 	- https://www.cs.purdue.edu/homes/rompf/papers/ofenbeck-scala16.pdf
-- ReduKtor: How We Stopped Worrying About Bugs in Kotlin Compiler
-	- Automated Software Engineering (ASE) 2019
-	- Daniil Stepanov, Marat Akhin, Mikhail Belyaev
-	- https://arxiv.org/abs/1909.07331
 - System Under Test: LLVM - https://systemundertest.org/llvm/
 - Taming compiler fuzzers
 	- PLDI 2013
 	- Y. Chen, A. Groce, C. Zhang, W.-K. Wong, X. Fern, E. Eide, J. Regehr
 	- https://www.cs.utah.edu/~regehr/papers/pldi13.pdf
 	- Fuzzers Need Taming - https://blog.regehr.org/archives/925
-- Test-Case Reduction for C Compiler Bugs
-	- PLDI 2012
-	- John Regehr, Yang Chen, Pascal Cuoq, Eric Eide, Chucky Ellison, Xuejun Yang
-	- https://www.cs.utah.edu/~regehr/papers/pldi12-preprint.pdf
 - Testing LLVM - http://blog.regehr.org/archives/1450
 - The problem with differential testing is that at least one of the compilers must get it right
 	- http://blog.frama-c.com/index.php?post/2013/09/25/The-problem-with-differential-testing-is-that-at-least-one-of-the-compilers-must-get-it-right
 
-### Performance Optimization
+### Testing: Readings: 2020
+
+- Closer to the Edge: Testing Compilers More Thoroughly by Being Less Conservative About Undefined Behaviour
+	- Automated Software Engineering (ASE) 2020
+	- Karine Even-Mendoza, Cristian Cadar, Alastair F. Donaldson
+	- https://srg.doc.ic.ac.uk/projects/csmithedge/
+	- https://srg.doc.ic.ac.uk/files/papers/csmithedge-ase-nier-20.pdf
+	- https://www.youtube.com/watch?v=JGpAO_Gu4zU
+	- https://conf.researchr.org/details/ase-2020/ase-2020-nier-track/8/Closer-to-the-Edge-Testing-Compilers-More-Thoroughly-by-Being-Less-Conservative-Abou
+- CUDAsmith: A Fuzzer for CUDA Compilers
+	- Computers, Software and Applications Conference (COMPSAC) 2020
+	- Bo Jiang, Xiaoyan Wang, W. K. Chan, T. H. Tse, Na Li, Yongfeng Yin, Zhenyu Zhang
+	- https://www.cs.hku.hk/data/techreps/document/TR-2020-05.pdf
+	- https://github.com/gongbell/CUDAsmith
+- Putting Randomized Compiler Testing into Production
+	- ECOOP 2020
+	- Alastair Donaldson, Hugues Evrard, Paul Thomson
+	- https://www.doc.ic.ac.uk/~afd/homepages/papers/pdfs/2020/ECOOP_GraphicsFuzz.pdf
+	- https://2020.ecoop.org/details/ecoop-2020-papers/22/Putting-Randomized-Compiler-Testing-into-Production
+	- http://multicore.doc.ic.ac.uk/tools/GraphicsFuzz/ECOOP2020Artifact/
+	- https://www.youtube.com/watch?v=qhqTyGccwS0
+- Random Testing for C and C++ Compilers with YARPGen
+	- OOPSLA 2020
+	- Vsevolod Livinskii, Dmitry Babokin, John Regehr
+	- https://doi.org/10.1145/3428264
+	- http://www.cs.utah.edu/~regehr/yarpgen-oopsla20.pdf
+	- https://www.youtube.com/watch?v=mb9aRoXnicE
+- Testing Static Analyses for Precision and Soundness
+	- Code Generation and Optimization (CGO) 2020
+	- Jubi Taneja, Zhengyang Liu, John Regehr
+	- http://www.cs.utah.edu/~regehr/cgo20.pdf
+	- https://github.com/jubitaneja/souper-cgo20-artifact
+	- Testing Dataflow Analyses for Precision and Soundness
+		- https://blog.regehr.org/archives/1709
+		- LLVM Dataflow Info Printer Pass
+			- https://github.com/regehr/llvm-dataflow-info
+
+### Testing: Readings: Generation
+
+- Stack-Driven Program Generation of WebAssembly
+	- Asian Symposium on Programming Languages and Systems (APLAS) 2020
+	- Árpád Perényi, Jan Midtgaard
+	- https://janmidtgaard.dk/papers/Perenyi-Midtgaard%3aAPLAS20.pdf
+	- Property-Based Testing of WebAssembly
+		- https://github.com/jmid/wasm-prop-tester
+
+### Testing: Readings: Performance Optimization
 
 - Compiler Testing via a Theory of Sound Optimisations in the C11/C++11 Memory Model
 	- Programming Language Design and Implementation (PLDI) 2013
@@ -323,7 +403,7 @@ See also: [compilers](compilers.md)
 	- https://hal.inria.fr/hal-01682683
 - Lost in translation: Exposing hidden compiler optimization opportunities
 	- 2019 arXiv
-	- Kyriakos Georgiou, Zbigniew Chamski, Andres Amaya Garcia, David May, Kerstin Eder 
+	- Kyriakos Georgiou, Zbigniew Chamski, Andres Amaya Garcia, David May, Kerstin Eder
 	- https://arxiv.org/abs/1903.11397
 	- https://github.com/TrustworthySystemLab/LostInTranslation
 - Random Testing of Compilers’ Performance Based on Mixed Static and Dynamic Code Comparison
@@ -346,22 +426,48 @@ See also: [compilers](compilers.md)
 	- slides: https://nebelwelt.net/publications/files/15LangSec-presentation.pdf
 	- talk: https://www.youtube.com/watch?v=g6LCtHz_MDc&list=PL0pRF4xvoD0kuECJuowraVIIHlT3pN1Cm&index=3
 
-## Software
+### Testing: Readings: Reduction
 
-- CF3: Test suite for arithmetic optimization of C compilers
-	- https://ist.ksc.kwansei.ac.jp/~ishiura/pub/CF3/
-	- https://github.com/ishiura-compiler/CF3
-- Csmith, a random generator of C programs
-	- https://github.com/csmith-project/csmith
-	- https://embed.cs.utah.edu/csmith/
-	- Csmith testing - http://blog.frama-c.com/index.php?pages/Csmith-testing
-- C-Reduce, a C program reducer
-	- https://embed.cs.utah.edu/creduce/
-	- https://github.com/csmith-project/creduce
-	- https://github.com/zjturner/creduce-windows
-	- Design and Evolution of C-Reduce
-		- Part 1: https://blog.regehr.org/archives/1678
-		- Part 2: https://blog.regehr.org/archives/1679
+See also: [Testing](https://github.com/MattPD/cpplinks/blob/master/testing.md): [Reduction](https://github.com/MattPD/cpplinks/blob/master/testing.md#reduction)
+
+- Automatic Test Case Reduction for OpenCL
+	- IWOCL 2016
+	- Moritz Pflanzer, Alastair F. Donaldson, Andrei Lascu
+	- https://dl.acm.org/citation.cfm?id=2909439
+	- paper: https://spiral.imperial.ac.uk/handle/10044/1/39576
+	- slides: http://www.iwocl.org/wp-content/uploads/iwocl-2016-automatic-test-case-reduction.pdf
+- Perses: Syntax-Directed Program Reduction
+	- https://github.com/chengniansun/perses
+	- ICSE 2018
+		- Chengnian Sun, Yuanbo Li, Qirun Zhang, Tianxiao Gu, Zhendong Su
+		- https://dl.acm.org/doi/10.1145/3180155.3180236
+		- https://people.inf.ethz.ch/suz/publications/perses.pdf
+		- https://helloqirun.github.io/papers/icse18_chengnian.pdf
+- ReduKtor: How We Stopped Worrying About Bugs in Kotlin Compiler
+	- Automated Software Engineering (ASE) 2019
+	- Daniil Stepanov, Marat Akhin, Mikhail Belyaev
+	- https://arxiv.org/abs/1909.07331
+- Test-Case Reduction for C Compiler Bugs
+	- PLDI 2012
+	- John Regehr, Yang Chen, Pascal Cuoq, Eric Eide, Chucky Ellison, Xuejun Yang
+	- https://www.cs.utah.edu/~regehr/papers/pldi12-preprint.pdf
+
+#### Testing: Readings: Reduction: LLVM
+
+- LLVM bugpoint
+	- LLVM bugpoint tool: design and usage
+		- https://llvm.org/docs/Bugpoint.html
+	- Reduce Your Testcases with Bugpoint and Custom Scripts
+		- https://blog.llvm.org/posts/2015-11-12-reduce-your-testcases-with-bugpoint-and/
+	- How to reduce a test case using LLVM bugpoint?
+		- 2020; Djordje Todorovic
+		- https://djolertrk.github.io/llvm-debug-info-blog/
+- LLVM-Reduce for testcase reduction
+	- 2019 LLVM Developers’ Meeting; Diego Trevino Ferrer
+	- https://www.youtube.com/watch?v=n1jDj7J9N8c
+
+## Testing: Software
+
 - Fuzzing LLVM libraries and tools - https://llvm.org/docs/FuzzingLLVM.html
 	- Adventures in Fuzzing Instruction Selection
 		- 2017 EuroLLVM Developers’ Meeting; Justin Bogner
@@ -383,16 +489,35 @@ See also: [compilers](compilers.md)
 	- GraphicsFuzz: Metamorphic Testing for Graphics Shader Compilers
 		- VF Conference 2019; Alastair Donaldson
 		- https://www.youtube.com/watch?v=r2GHwhCbcKo
+	- shader-compiler-bugs: A collection of shader compiler bugs
+		- https://github.com/mc-imperial/shader-compiler-bugs
+- lang_tester: Rust testing framework for compilers and VMs
+	- https://crates.io/crates/lang_tester
+- lit - LLVM Integrated Tester
+	- https://pypi.org/project/lit/
+	- Using LLVM LIT Out-Of-Tree
+		- https://medium.com/@mshockwave/using-llvm-lit-out-of-tree-5cddada85a78
+	- Pushing Back Lit's Boundaries to Test Libc++
+		- 2020 LLVM Developers’ Meeting; Louis Dionne
+		- https://www.youtube.com/watch?v=z5-wo0TW26M
+- llvm-mutate – mutate LLVM IR - http://eschulte.github.io/llvm-mutate/
+- OutputCheck: A tool for checking tool output inspired by LLVM's FileCheck
+	- https://github.com/stp/OutputCheck/
+- prog-fuzz: Compiler/source code fuzzing tool using AFL instrumentation
+	- https://github.com/vegard/prog-fuzz
+
+### Testing: Software: Generation
+
+- Csmith, a random generator of C programs
+	- https://github.com/csmith-project/csmith
+	- https://embed.cs.utah.edu/csmith/
+	- Csmith testing - http://blog.frama-c.com/index.php?pages/Csmith-testing
 - kscope
 	- a library which recursively generates randomized code while keeping it 100% equivalent to the original one
 	- http://ithare.com/c17-compiler-bug-hunt-very-first-results-12-bugs-reported-3-already-fixed/
 	- https://github.com/ITHare/kscope
-- lang_tester: Rust testing framework for compilers and VMs
-	- https://crates.io/crates/lang_tester
-- ldrgen: Liveness-driven random C code generator - https://github.com/gergo-/ldrgen
-- llvm-mutate – mutate LLVM IR - http://eschulte.github.io/llvm-mutate/
-- opt-fuzz: a simple implementation of bounded exhaustive testing for LLVM programs
-	- https://github.com/regehr/opt-fuzz
+- ldrgen: Liveness-driven random C code generator
+	- https://github.com/gergo-/ldrgen
 - Orange3
 	- a tool to test C compilers with randomly generated programs; mainly targets arithmetic optimization such as constant folding.
 	- https://ist.ksc.kwansei.ac.jp/~ishiura/pub/orange3/
@@ -401,18 +526,49 @@ See also: [compilers](compilers.md)
 	- a tool to test C compilers by randomly generated programs; based on equivalent transformations on C programs and can generate wider class of C test programs than Orange3.
 	- https://ist.ksc.kwansei.ac.jp/~ishiura/pub/orange4/
 	- https://github.com/ishiura-compiler/Orange4
-- OutputCheck: A tool for checking tool output inspired by LLVM's FileCheck
-	- https://github.com/stp/OutputCheck/
-- prog-fuzz: Compiler/source code fuzzing tool using AFL instrumentation
-	- https://github.com/vegard/prog-fuzz
-- Quest: A tool for testing C compilers - https://github.com/lindig/quest
-- shader-compiler-bugs: A collection of shader compiler bugs - https://github.com/mc-imperial/shader-compiler-bugs
+- Quest: A tool for testing C compilers
+	- a tool that generates C code for testing C compilers
+	- https://github.com/lindig/quest
+- StarSmith
+	- Language-Agnostic Generation of Compilable Test Programs
+	- International Conference on Software Testing, Validation and Verification (ICST) 2020
+	- Patrick Kreutzer, Stefan Kraus, Michael Philippsen
+	- https://icst2020.info/details/icst-2020-papers/2/Language-Agnostic-Generation-of-Compilable-Test-Programs
+	- https://ieeexplore.ieee.org/abstract/document/9159098
+	- https://github.com/FAU-Inf2/StarSmith
+- Xsmith: a library and DSL for creating random program generators
+	- https://www.flux.utah.edu/project/xsmith
+	- https://gitlab.flux.utah.edu/xsmith/xsmith
 - yarpgen: Yet Another Random Program Generator
 	- a random C/C++ program generator, which produces correct runnable C/C++ programs
 	- specifically designed to trigger compiler optimization bugs and is intended for compiler testing
 	- https://github.com/intel/yarpgen
 
-## Talks
+### Testing: Software: Performance Optimization
+
+- CF3: Test suite for arithmetic optimization of C compilers
+	- https://ist.ksc.kwansei.ac.jp/~ishiura/pub/CF3/
+	- https://github.com/ishiura-compiler/CF3
+- LongFruit: Quickly Finding RISC-V Code Quality Issues with Differential Analysis
+	- https://www.lowrisc.org/blog/2020/10/how-we-used-differential-testing-to-rapidly-find-and-fix-missed-optimisation-opportunities-in-llvms-risc-v-backend/
+	- https://github.com/lowRISC/longfruit
+- opt-fuzz: a simple implementation of bounded exhaustive testing for LLVM programs
+	- https://github.com/regehr/opt-fuzz
+
+### Testing: Software: Reduction
+
+- C-Reduce, a C program reducer
+	- https://embed.cs.utah.edu/creduce/
+	- https://github.com/csmith-project/creduce
+	- https://github.com/zjturner/creduce-windows
+	- Design and Evolution of C-Reduce
+		- Part 1: https://blog.regehr.org/archives/1678
+		- Part 2: https://blog.regehr.org/archives/1679
+- C-Vise: a super-parallel Python port of the C-Reduce
+	- The port is fully compatible to the C-Reduce and uses the same efficient LLVM-based C/C++ reduction tool named clang_delta.
+	- https://github.com/marxin/cvise
+
+## Testing: Talks
 
 - A Year of Experience with Broad Based Continuous Testing with GCC
 	- GNU Tools Cauldron 2019; Jeff Law
@@ -451,7 +607,7 @@ See also: [compilers](compilers.md)
 	- 2019 EuroLLVM Developers’ Meeting; José Luis March Cabrelles
 	- https://www.youtube.com/watch?v=nSfT4oND9dU
 - Testing Language Implementations
-- Programming Language Implementation Summer School (PLISS) 2017; Alastair Donaldson
+	- Programming Language Implementation Summer School (PLISS) 2017; Alastair Donaldson
 	- https://www.youtube.com/watch?v=ZJUk8_k1HbY
 
 ---
@@ -459,6 +615,34 @@ See also: [compilers](compilers.md)
 # Validation
 
 Validation: Including translation validation, equivalence checking.
+
+## Validation: 2020
+
+- A Scalable Validation of Binary Lifters
+	- PLDI 2020
+	- Sandeep Dasgupta, & Vikram S. Adve
+	- https://sdasgup3.github.io/files/pldi_2020.pdf
+	- https://www.youtube.com/watch?v=veV6TuPsRYw
+	- https://pldi20.sigplan.org/details/pldi-2020-papers/4/Scalable-Validation-of-Binary-Lifters
+- Counterexample-Guided Correlation Algorithm for Translation Validation
+	- OOPSLA 2020
+	- Shubhani Gupta, Abhishek Rose, Sorav Bansal
+	- https://doi.org/10.1145/3428289
+	- https://www.youtube.com/watch?v=Bn_ekogqDcw
+	- https://raw.githubusercontent.com/compilerai/compilerai-publications/master/counter.pdf
+
+## Validation: 2019
+
+- Semantic Program Alignment for Equivalence Checking
+	- PLDI 2019
+	- Berkeley Churchill, Oded Padon, Rahul Sharma, Alex Aiken
+	- https://www.youtube.com/watch?v=FJGvInzaiAQ
+	- https://raw.githubusercontent.com/bchurchill/pldi19-equivalence-checker/master/pldi2019.pdf
+	- https://pldi19.sigplan.org/details/pldi-2019-papers/14/Semantic-Program-Alignment-for-Equivalence-Checking
+	- Semantic Alignment Equivalence Checker
+		- https://github.com/bchurchill/pldi19-equivalence-checker
+
+## Validation: 2017
 
 - Black-Box Equivalence Checking Across Compiler Optimizations
 	- APLAS 2017
@@ -468,24 +652,35 @@ Validation: Including translation validation, equivalence checking.
 	- HVC 2017; Manjeet Dahiya, Sorav Bansal
 	- http://www.cse.iitd.ernet.in/~sbansal/pubs/hvc17.pdf
 	- http://www.cse.iitd.ac.in/~dahiya/hvc17.pdf
+- Translation Validation for Verified, Efficient and Timely Operating Systems
+	- 2017 PhD Dissertation; Thomas Sewell
+	- http://handle.unsw.edu.au/1959.4/58861
+	- https://ts.data61.csiro.au/publications/papers/Sewell:phd
+	- https://ts.data61.csiro.au/projects/TS/compiler-correctness.pml
+- Translation Validation of Bounded Exhaustive Test Cases
+	- 2017; Nuno Lopes, John Regehr
+	- https://blog.regehr.org/archives/1510
+	- Translation Validation with Alive - https://github.com/nunoplopes/alive/tree/newsema/tv
+
+## Validation: 2016
+
+- Formally Verified Compilation of Low-Level C code
+	- 2016 PhD Dissertation; Pierre Wilke
+	- https://tel.archives-ouvertes.fr/tel-01483676
+- Validating Optimizations of Concurrent C/C++ Programs
+	- CGO 2016
+	- Soham Chakraborty, Viktor Vafeiadis
+	- https://plv.mpi-sws.org/validc/paper.pdf
+
+## Validation: 2011-1978
+
 - Evaluating value-graph translation validation for LLVM
 	- Programming and Language Design Implementation (PLDI) 2011
 	- Jean-Baptiste Tristan, Paul Govereau, Greg Morrisett
 	- https://dl.acm.org/citation.cfm?id=1993498.1993533
-- Formally Verified Compilation of Low-Level C code
-	- 2016 PhD Dissertation; Pierre Wilke
-	- https://tel.archives-ouvertes.fr/tel-01483676
 - Proving the correctness of heuristically optimized code
 	- CACM 1978; Hanan Samet
 	- http://www.cs.umd.edu/~hjs/pubs/compilers/proving-correctness.pdf
-- Semantic Program Alignment for Equivalence Checking
-	- PLDI 2019
-	- Berkeley Churchill, Oded Padon, Rahul Sharma, Alex Aiken
-	- https://www.youtube.com/watch?v=FJGvInzaiAQ
-	- https://raw.githubusercontent.com/bchurchill/pldi19-equivalence-checker/master/pldi2019.pdf
-	- https://pldi19.sigplan.org/details/pldi-2019-papers/14/Semantic-Program-Alignment-for-Equivalence-Checking
-	- Semantic Alignment Equivalence Checker
-		- https://github.com/bchurchill/pldi19-equivalence-checker
 - Translation validation
 	- TACAS 1998
 	- Amir Pnueli, Michael Siegel, Eli Singerman
@@ -506,26 +701,13 @@ Validation: Including translation validation, equivalence checking.
 	- PLDI 2000
 	- George C. Necula
 	- https://dl.acm.org/citation.cfm?id=349314
-- Translation Validation for Verified, Efficient and Timely Operating Systems
-	- 2017 PhD Dissertation; Thomas Sewell
-	- http://handle.unsw.edu.au/1959.4/58861
-	- https://ts.data61.csiro.au/publications/papers/Sewell:phd
-	- https://ts.data61.csiro.au/projects/TS/compiler-correctness.pml
-- Translation Validation of Bounded Exhaustive Test Cases
-	- 2017; Nuno Lopes, John Regehr
-	- https://blog.regehr.org/archives/1510
-	- Translation Validation with Alive - https://github.com/nunoplopes/alive/tree/newsema/tv
-- Validating Optimizations of Concurrent C/C++ Programs
-	- CGO 2016
-	- Soham Chakraborty, Viktor Vafeiadis
-	- https://plv.mpi-sws.org/validc/paper.pdf
 
 ---
 
 # Verification
 
 - A Higher-Order Abstract Syntax Approach to the Verified Compilation of Functional Programs
-	- 2016 PhD thesis; Yuting Wang 
+	- 2016 PhD thesis; Yuting Wang
 	- https://arxiv.org/abs/1702.03363
 	- http://www.cs.yale.edu/homes/wang-yuting/files/phd_thesis.pdf
 - A Verified Compiler for a Linear Function/Imperative Intermediate Language
@@ -539,7 +721,8 @@ Validation: Including translation validation, equivalence checking.
 	- slides: http://llvm.org/devmtg/2014-10/Slides/Menendez-Alive.pdf
 	- Alive-FP: Automated Verification of Floating Point Based Peephole Optimizations in LLVM
 		- SAS 2016; David Menendez, Santosh Nagarakatte, Aarti Gupta
-		- https://www.cs.rutgers.edu/research/technical_reports/report.php?series_id=1&report_id=723
+		- https://doi.org/doi:10.7282/T3XW4PC5
+		- https://doi.org/10.1007/978-3-662-53413-7_16
 	- Alive-Loops: https://github.com/rutgers-apl/alive-loops
 		- Termination checking for LLVM peephole optimizations
 		- ICSE 2016; David Menendez, Santosh Nagarakatte
@@ -571,10 +754,17 @@ Validation: Including translation validation, equivalence checking.
 		- https://github.com/Microsoft/AliveInLean
 - Alive2: Automatic verification of LLVM optimizations
 	- https://github.com/AliveToolkit/alive2
+	- https://alive2.llvm.org/
 	- Alive2: Verifying Existing Optimizations
 		- 2019 LLVM Developers’ Meeting; Nuno Lopes, John Regehr
 		- https://www.youtube.com/watch?v=paJhdBp_iA4
 		- https://llvm.org/devmtg/2019-10/slides/Lopes-Regehr-Alive2.pdf
+	- Alive 2 Part 1: Introduction
+		- https://blog.regehr.org/archives/1722
+	- Alive2 Part 2: Tracking miscompilations in LLVM using its own unit tests
+		- https://blog.regehr.org/archives/1737
+	- Alive2 Part 3: Things You Can and Can’t Do with Undef in LLVM
+		- https://blog.regehr.org/archives/1837
 - An Abstract Stack Based Approach to Verified Compositional Compilation to Machine Code
 	- POPL 2019
 	- Yuting Wang, Pierre Wilke, Zhong Shao
@@ -597,14 +787,18 @@ Validation: Including translation validation, equivalence checking.
 	- The Verified CakeML Compiler Backend
 		- JFP 2019
 		- Yong Kiam Tan, Magnus O. Myreen, Ramana Kumar, Anthony Fox, Scott Owens, Michael Norrish
-		- https://www.cs.cmu.edu/~yongkiat/files/cakeml-jfp.pdf
+		- https://cakeml.org/jfp19.pdf
 	- Icing: Supporting Fast-math Style Optimizations in a Verified Compiler
 		- Computer-Aided Verification (CAV) 2019
 		- Heiko Becker, Eva Darulova, Magnus O. Myreen, Zachary Tatlock
 		- https://cakeml.org/cav19.pdf
 - CompCert: formally-verified C compiler
 	- http://compcert.inria.fr/
-	- https://github.com/AbsInt/CompCert 
+	- https://github.com/AbsInt/CompCert
+	- CompCert Tutorial
+		- November 2015; Ben Greenman
+		- A fast walk through the CompCert compiler. Goes over the architecture, correctness strategy, and correctness proof.
+		- http://www.ccs.neu.edu/home/types/resources/notes/compcert/cc.pdf
 	- The formal verification of compilers - Xavier Leroy - DeepSpec Summer School 2017
 		- https://deepspec.org/event/dsss17/lecture_leroy.html
 		- http://gallium.inria.fr/~xleroy/courses/DSSS-2017/
@@ -623,9 +817,15 @@ Validation: Including translation validation, equivalence checking.
 	- Closing the Gap – The Formally Verified Optimizing Compiler CompCert
 		- SSS'17: Safety-critical Systems Symposium 2017
 		- https://hal.inria.fr/hal-01399482/
+	- CompCertELF: Verified Separate Compilation of C Programs into ELF Object Files
+		- OOPSLA 2020
+		- Yuting Wang, Xiangzhe Xu, Pierre Wilke, Zhong Shao
+		- https://doi.org/10.1145/3428265
+		- https://www.youtube.com/watch?v=po9lhcSWssg
+		- https://2020.splashcon.org/details/splash-2020-oopsla/73/CompCertELF-Verified-Separate-Compilation-of-C-Programs-into-ELF-Object-Files
 	- CompCertM: CompCert with Lightweight Modular Verification and Multi-Language Linking
 		- POPL 2020
-		- Youngju Song, Minki Cho, Dongjoo Kim, Yonghyun Kim, Jeehoon Kang, Chung-Kil Hur 
+		- Youngju Song, Minki Cho, Dongjoo Kim, Yonghyun Kim, Jeehoon Kang, Chung-Kil Hur
 		- https://sf.snu.ac.kr/compcertm/
 	- CompCertS: A Memory-Aware Verified C Compiler Using a Pointer as Integer Semantics
 		- Journal of Automated Reasoning 63(2) (2019)
@@ -638,11 +838,17 @@ Validation: Including translation validation, equivalence checking.
 		- https://github.com/PrincetonUniversity/compcomp
 	- Formal Verification of a Constant-Time Preserving C Compiler
 		- Principles of Programming Languages (POPL) 2020
-		- Gilles Barthe, Sandrine Blazy, Benjamin Grégoire, Rémi Hutin, Vincent Laporte, David Pichardie, Alix Trieu.
+		- Gilles Barthe, Sandrine Blazy, Benjamin Grégoire, Rémi Hutin, Vincent Laporte, David Pichardie, Alix Trieu
 		- https://eprint.iacr.org/2019/926
 		- http://cs.au.dk/%7Etrieu/POPL20/
 		- Slides (Verified Software Workshop): https://vetss.org.uk/wp-content/uploads/sites/122/2019/10/Blazy-Formal-Verification-of-a-Constant-Time.pdf
 		- https://vetss.org.uk/verified-software-workshop-programme/
+		- https://doi.org/10.1145/3371075
+		- A CompCert Compiler that Preserves Cryptographic Constant-time
+			- Sandrine Blazy, Rémi Hutin, David Pichardie
+			- PriSC 2020 Principles of Secure Compilation
+			- https://popl20.sigplan.org/details/prisc-2020-papers/10/A-CompCert-Compiler-that-Preserves-Cryptographic-Constant-time
+			- https://www.youtube.com/watch?v=eci48EC4v4o
 	- Lightweight Verification of Separate Compilation
 		- POPL 2016
 		- Jeehoon Kang, Yoonseung Kim, Chung-Kil Hur, Derek Dreyer, Viktor Vafeiadis
@@ -662,7 +868,7 @@ Validation: Including translation validation, equivalence checking.
 - Compilation Using Correct-by-Construction Program Synthesis
 	- 2016 Master's Thesis; Clément Pit-Claudel
 	- http://pit-claudel.fr/clement/MSc/
-	- https://dspace.mit.edu/bitstream/handle/1721.1/107293/973557793-MIT.pdf?sequence=1
+	- https://dspace.mit.edu/handle/1721.1/107293
 	- http://pit-claudel.fr/clement/MSc/FiatToFacade_Pit-Claudel_2016.pdf
 - Compositional Verification of Compiler Optimisations on Relaxed Memory
 	- ESOP 2018
@@ -673,19 +879,16 @@ Validation: Including translation validation, equivalence checking.
 	- Jeehoon Kang, Yoonseung Kim, Youngju Song, Juneyoung Lee, Sanghoon Park, Mark Dongyeon Shin, Yonghyun Kim, Sungkeun Cho, Joonwon Choi,Chung-Kil Hur, Kwangkeun Yi
 	- a verified credible compilation (or equivalently, verified translation validation) framework for LLVM
 	- http://sf.snu.ac.kr/crellvm/
-	- http://sf.snu.ac.kr/gil.hur/publications/crellvm.pdf
-	- http://sf.snu.ac.kr/gil.hur/publications/crellvm.zip
 	- https://github.com/snu-sf/crellvm-tests-parallel
-- Mechanized Semantics and Verified Compilation for a Dataflow Synchronous Language with Reset
-	- POPL 2020
-	- Timothy Bourke, Lélio Brun, Marc Pouzet
-	- https://popl20.sigplan.org/details/POPL-2020-Research-Papers/20/Mechanized-Semantics-and-Verified-Compilation-for-a-Dataflow-Synchronous-Language-wit
-	- https://github.com/INRIA/velus
 - Pilsner: A Compositionally Verified Compiler for a Higher-Order Imperative Language
 	- International Conference on Functional Programming (ICFP) 2015
 	- Georg Neis, Chung-Kil Hur, Jan-Oliver Kaiser, Craig McLaughlin, Derek Dreyer, Viktor Vafeiadis
 	- https://people.mpi-sws.org/~dreyer/papers/pilsner/paper.pdf
 	- http://plv.mpi-sws.org/pils/
+- Program Logics for Certified Compilers
+	- Andrew W. Appel with Robert Dockins, Aquinas Hobor, Lennart Beringer, Josiah Dodds, Gordon Stewart, Sandrine Blazy, Xavier Leroy
+	- Cambridge University Press, 2014
+	- https://www.cs.princeton.edu/%7Eappel/papers/plcc.pdf
 - Pushing the Limits of Compiler Verification
 	- 2018 PhD Thesis; Eric Mullen
 	- https://homes.cs.washington.edu/~djg/theses/mullen_thesis.pdf
@@ -715,3 +918,42 @@ Validation: Including translation validation, equivalence checking.
 	- Summit on Advances in Programming Languages (SNAPL) 2015
 	- Amal Ahmed
 	- http://www.ccs.neu.edu/home/amal/papers/verifcomp.pdf
+
+## Verification: 2020
+
+- A Verified Packrat Parser Interpreter for Parsing Expression Grammars
+	- Conference on Certified Programs and Proofs (CPP) 2020
+	- Clement Blaudeau, Natarajan Shankar
+	- https://arxiv.org/abs/2001.04457
+	- https://www.youtube.com/watch?v=hLjRcMAMuts
+- Mechanized Semantics and Verified Compilation for a Dataflow Synchronous Language with Reset
+	- POPL 2020
+	- Timothy Bourke, Lélio Brun, Marc Pouzet
+	- https://popl20.sigplan.org/details/POPL-2020-Research-Papers/20/Mechanized-Semantics-and-Verified-Compilation-for-a-Dataflow-Synchronous-Language-wit
+	- https://github.com/INRIA/velus
+- Specification and verification in the field: Applying formal methods to BPF just-in-time compilers in the Linux kernel
+	- Operating Systems Design and Implementation (OSDI) 2020
+	- Luke Nelson, Jacob Van Geffen, Emina Torlak, Xi Wang
+	- https://unsat.cs.washington.edu/papers/nelson-jitterbug.pdf
+	- https://github.com/uw-unsat/jitterbug
+- The Correctness of a Code Generator for a Functional Language
+	- Verification, Model Checking, and Abstract Interpretation (VMCAI) 2020
+	- Nathanaël Courant, Antoine Séré, Natarajan Shankar
+	- https://doi.org/10.1007/978-3-030-39322-9_4
+- Towards a Verified Range Analysis for JavaScript JITs
+	- Programming Language Design and Implementation (PLDI) 2020
+	- Fraser Brown, John Renner, Andres Nötzli, Sorin Lerner, Hovav Shacham, Deian Stefan
+	- https://doi.org/10.1145/3385412.3385968
+	- https://vera.programming.systems
+	- https://github.com/PLSysSec/vera
+	- https://pldi20.sigplan.org/details/pldi-2020-papers/8/Towards-a-Verified-Range-Analysis-for-JavaScript-JITs
+	- https://www.youtube.com/watch?v=5tRK5_GPdpM
+- Towards Formally Verified Just-In-Time Compilation
+	- CoqPL 2020
+	- Aurèle Barrière, Sandrine Blazy, David Pichardie
+	- https://www.youtube.com/watch?v=Be-CwSREJOI
+	- https://popl20.sigplan.org/details/CoqPL-2020-papers/4/Towards-Formally-Verified-Just-in-Time-compilation
+- Verified Optimizations for Functional Languages
+	- 2020 PhD Dissertation; Zoe Paraskevopoulou
+	- https://www.cs.princeton.edu/research/techreps/TR-006-20
+	- https://zoep.github.io/thesis_final.pdf

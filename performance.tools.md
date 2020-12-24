@@ -18,6 +18,9 @@
 
 ## Software
 
+- ankerl::nanobench: a platform independent microbenchmarking library for C++11/14/17/20
+	- https://github.com/martinus/nanobench
+	- https://nanobench.ankerl.com/
 - benchmark (Google)
 	- https://github.com/google/benchmark
 	- https://opensource.googleblog.com/2014/01/introducing-benchmark.html
@@ -25,12 +28,27 @@
 	- https://github.com/DigitalInBlue/Celero
 - hayai: the C++ benchmarking framework
 	- https://github.com/nickbruun/hayai
-- moodycamel::microbench
-	- https://github.com/cameron314/microbench
+- HdrHistogram: A High Dynamic Range (HDR) Histogram
+	- https://hdrhistogram.github.io/HdrHistogram/
+	- https://github.com/HdrHistogram/HdrHistogram_c
+	- Understanding Latency and Response Time: Pitfalls and Key Lessons
+		- 2015; Gil Tene
+		- https://www.youtube.com/watch?v=G5UskyPG9_o
+		- https://www.azul.com/presentation/understanding-latency-and-response-time-behavior/
+	- How Not to Measure Latency
+		- 2013; Gil Tene
+		- https://www.youtube.com/watch?v=DxF077s081Q
+		- https://www.slideshare.net/howarddgreen/how-not-to-measure-latency-london-oct-2013
+		- https://www.azul.com/presentation/how-not-to-measure-latency/
 - geiger: A micro benchmark library in C++ that supports hardware performance counters
 	- https://github.com/david-grs/geiger
+- moodycamel::microbench
+	- https://github.com/cameron314/microbench
 - Nonius: A C++ micro-benchmarking framework
 	- https://github.com/libnonius/nonius
+- ubench.h: single header benchmark framework for C and C++
+	- https://github.com/sheredom/ubench.h
+	- https://www.duskborn.com/posts/introducing_ubench_h/
 
 ## Readings
 
@@ -54,6 +72,10 @@
 	- a set of assembler routines to measure the parallel memory (cache and RAM) bandwidth of modern multi-core machines
 	- http://panthema.net/2013/pmbw/
 	- https://github.com/bingmann/pmbw
+- Spatter: Benchmark for measuring the performance of sparse and irregular memory access
+	- https://github.com/hpcgarage/spatter
+	- Spatter: A Tool for Evaluating Gather / Scatter Performance
+		- https://arxiv.org/abs/1811.03743
 - STREAM: Sustainable Memory Bandwidth in High Performance Computers
 	- http://www.cs.virginia.edu/stream/
 	- STREAM benchmark - https://github.com/jeffhammond/STREAM
@@ -61,6 +83,10 @@
 	- BabelStream: STREAM, for lots of devices written in many programming models
 		- https://github.com/UoB-HPC/BabelStream
 		- http://uob-hpc.github.io/BabelStream/
+- TheBandwidthBenchmark
+	- https://github.com/RRZE-HPC/TheBandwidthBenchmark
+	- https://hpc-wiki.info/hpc/Micro_benchmarking#The_Bandwidth_Benchmark
+	- a collection of simple streaming kernels; apart from the micro-benchmark functionality also a blueprint for other micro-benchmark applications; contains C modules for: aligned data allocation, query and control affinity settings, accurate timing
 - tinymembench: simple benchmark for memory throughput and latency
 	- https://github.com/ssvb/tinymembench
 
@@ -81,14 +107,14 @@
 	- MALT: a MALloc Tracker to find where and how your made your memory allocations in C/C++/Fortran applications
 		- https://memtt.github.io/malt/
 		- https://github.com/memtt/malt
-	- MALT: A Malloc Tracker
-		- International Workshop on Software Engineering for Parallel Systems (SEPS) 2017
-		- Sébastien Valat, Andres S. Charif-Rubial, William Jalby
-		- paper: https://memtt.github.io/malt/downloads/2017-seps-malt.pdf
-		- slides: https://svalat.github.io/docs/2017-10-MALT-SEPS17.pdf
-	- FOSDEM 2019; Sébastien Valat
-		- https://www.youtube.com/watch?v=TnMOjdIy_Ow
-		- https://fosdem.org/2019/schedule/event/numaprof/
+		- MALT: A Malloc Tracker
+			- International Workshop on Software Engineering for Parallel Systems (SEPS) 2017
+			- Sébastien Valat, Andres S. Charif-Rubial, William Jalby
+			- paper: https://memtt.github.io/malt/downloads/2017-seps-malt.pdf
+			- slides: https://svalat.github.io/docs/2017-10-MALT-SEPS17.pdf
+		- FOSDEM 2019; Sébastien Valat
+			- https://www.youtube.com/watch?v=TnMOjdIy_Ow
+			- https://fosdem.org/2019/schedule/event/numaprof/
 - Memoro: A Detailed Heap Profiler
 	- https://epfl-vlsc.github.io/memoro/
 	- https://github.com/epfl-vlsc/memoro
@@ -101,7 +127,7 @@
 		- https://www.youtube.com/watch?v=fm47XsATelI
 		- https://llvm.org/devmtg/2019-10/slides/Treyer-Memoro.pdf
 - memory-profiler: A memory profiler for Linux
-	- https://github.com/nokia/memory-profiler
+	- https://github.com/koute/memory-profiler
 - memtrail: A LD_PRELOAD based memory profiler and leak detector for Linux
 	- ​https://github.com/jrfonseca/memtrail
 - memusage - profile memory usage of a program
@@ -109,6 +135,19 @@
 - MTuner - a C/C++ memory profiler and memory leak finder for Windows, PlayStation 4, PlayStation 3, etc.
 	- https://milostosic.github.io/MTuner/
 	- https://github.com/milostosic/MTuner
+- PerfMemPlus: A Tool for Automatic Discovery of Memory Performance Problems
+	- Tool for memory performance analysis based on Linux perf.
+	- https://github.com/helchr/perfMemPlus
+	- PerfMemPlus: A Tool for Automatic Discovery of Memory Performance Problems
+		- ISC 2019
+		- Christian Helm, Kenjiro Taura
+		- https://doi.org/10.1007/978-3-030-20656-7_11
+	- On the Correct Measurement of Application Memory Bandwidth and Memory Access Latency
+		- HPC Asia 2020
+		- Christian Helm, Kenjiro Taura
+		- https://doi.org/10.1145/3368474.3368476
+- Poireau: a sampling allocation debugger
+	- https://github.com/backtrace-labs/poireau
 - Typegrind
 	- a type preserving heap profiler for C++ - collects memory allocation information with type information
 	- https://typegrind.github.io/
@@ -128,6 +167,11 @@
 		- 2018 SC18 ACM SRC Poster
 		- J. Hammer, G. Hager, G. Wellein
 		- https://sc18.supercomputing.org/proceedings/src_poster/src_poster_pages/spost115.html
+- BHive: A Benchmark Suite and Measurement Framework for Validating x86-64 Basic Block Performance Models
+	- IISWC 2019
+	- Yishen Chen, Ajay Brahmakshatriya, Charith Mendis, Alex Renda, Eric Atkinson, Ondrej Sykora, Saman Amarasinghe, Michael Carbin
+	- http://groups.csail.mit.edu/commit/papers/19/ithemal-measurement.pdf
+	- https://github.com/ithemal/bhive
 - Intel Architecture Code Analyzer (IACA)
 	- https://software.intel.com/en-us/articles/intel-architecture-code-analyzer
 - ibench: Measure instruction latency and throughput
@@ -136,7 +180,7 @@
 	- https://github.com/psg-mit/Ithemal
 	- Ithemal: Accurate, Portable and Fast Basic Block Throughput Estimation using Deep Neural Networks
 		- ICML 2019
-		- Charith Mendis, Alex Renda, Saman Amarasinghe, Michael Carbin 
+		- Charith Mendis, Alex Renda, Saman Amarasinghe, Michael Carbin
 		- https://arxiv.org/abs/1808.07412
 		- http://proceedings.mlr.press/v97/mendis19a.html
 - llvm-exegesis – LLVM Machine Instruction Benchmark
@@ -158,6 +202,14 @@
 	- Understanding the performance of code using LLVM's Machine Code Analyzer (llvm-mca)
 		- 2018 LLVM Developers’ Meeting; Andrea Di Biagio & Matt Davis
 		- https://www.youtube.com/watch?v=Ku2D8bjEGXk
+	- MC Ruler: Seamless llvm-mca CMake integration
+		- https://github.com/jeremyong/mc_ruler
+	- DiffTune: Optimizing CPU Simulator Parameters with Learned Differentiable Surrogates
+		- MICRO 2020
+		- Alex Renda, Yishen Chen, Charith Mendis, Michael Carbin
+		- https://arxiv.org/abs/2010.04017
+		- https://github.com/ithemal/DiffTune
+		- https://www.youtube.com/watch?v=7sN2YsqgPLY
 - nanoBench: A tool for running small microbenchmarks on recent Intel and AMD x86 CPUs
 	- used for running the microbenchmarks for obtaining the latency, throughput, and port usage data available on http://uops.info
 	- https://github.com/andreas-abel/nanoBench
@@ -165,13 +217,19 @@
 	- nanoBench Cache Analyzer
 		- https://github.com/andreas-abel/nanoBench/tree/master/tools/CacheAnalyzer
 		- https://uops.info/cache.html
+	- Automatic Generation of Models of Microarchitectures
+		- 2020 PhD Dissertation; Andreas Abel
+		- https://d-nb.info/1212853466/34
+		- https://dx.doi.org/10.22028/D291-31299
 	- uops.info: Characterizing Latency, Throughput, and Port Usage of Instructions on Intel Microarchitectures
 		- ASPLOS 2019
 		- Andreas Abel, Jan Reineke
 		- https://arxiv.org/abs/1810.04610
 	- nanoBench: A Low-Overhead Tool for Running Microbenchmarks on x86 Systems
-		- 2019; Andreas Abel, Jan Reineke
+		- 2020 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)
+		- Andreas Abel, Jan Reineke
 		- https://arxiv.org/abs/1911.03282
+		- https://www.youtube.com/watch?v=DEN4UteY4Sg
 - Open Power/Performance Analysis Tool (OPPAT)
 	- a cross-OS, cross-architecture Power and Performance Analysis Tool
 	- cross-OS: supports Windows ETW trace files and Linux/Android perf/trace-cmd trace files
@@ -183,12 +241,24 @@
 	- https://hpc.fau.de/research/tools/
 	- Automated Instruction Stream Throughput Prediction for Intel and AMD Microarchitectures
 		- Performance Modeling, Benchmarking and Simulation of High Performance Computer Systems (PMBS) 2018
+		- Jan Laukemann, Julian Hammer, Johannes Hofmann, Georg Hager, Gerhard Wellein
 		- https://arxiv.org/abs/1809.00912
 	- Automatic Throughput and Critical Path Analysis of x86 and ARM Assembly Kernels
 		- arXiv 2019
 		- Jan Laukemann, Julian Hammer, Georg Hager, Gerhard Wellein
 		- https://arxiv.org/abs/1910.00214
 		- https://github.com/RRZE-HPC/OSACA-CP-2019
+	- Cross-Architecture Automatic Critical Path Detection For In-Core Performance Analysis
+		- 2020 Master Thesis; Jan Laukemann
+		- https://hpc.fau.de/files/2020/02/Masterarbeit_JL-_final.pdf
+		- Measurements and reproducibility instructions
+			- https://github.com/RRZE-HPC/OSACA-Artifact-Appendix
+- PMEvo: Portable Inference of Port Mappings for Out-of-Order Processors by Evolutionary Optimization
+	- PLDI 2020
+	- Fabian Ritter, Sebastian Hack
+	- https://compilers.cs.uni-saarland.de/papers/ritter_pmevo_pldi20.pdf
+	- https://compilers.cs.uni-saarland.de/projects/portmap/
+	- https://github.com/cdl-saarland/pmevo-artifact
 - timing-harness: Harness for profiling arbitrary basic blocks.
 	- https://github.com/ithemal/timing-harness
 - uarch-bench: A benchmark for low-level CPU micro-architectural features
@@ -210,13 +280,13 @@
 		- https://arxiv.org/abs/1807.06735
 - MAQAO (Modular Assembly Quality Analyzer and Optimizer)
 	- http://www.maqao.org/
-	- http://maqao.bordeaux.inria.fr/
+	- https://gitlab.exascale-computing.eu/MAQAO/MAQAO
 
 # Profiling
 
 - Agner Fog's test programs for measuring clock cycles and performance monitoring
 	- http://www.agner.org/optimize/#testp
-- BCC - Tools for BPF-based Linux IO analysis, networking, monitoring, and more 
+- BCC - Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 	- https://iovisor.github.io/bcc/
 	- https://github.com/iovisor/bcc
 	- https://github.com/iovisor/bpf-docs
@@ -224,6 +294,9 @@
 	- http://www.brendangregg.com/blog/2016-03-28/linux-bpf-bcc-road-ahead-2016.html
 	- http://www.brendangregg.com/blog/2016-06-14/ubuntu-xenial-bcc-bpf.html
 	- https://qmonnet.github.io/whirl-offload/2016/09/01/dive-into-bpf/
+- Caliper: A Performance Analysis Toolbox in a Library
+	- an instrumentation and performance profiling library
+	- https://github.com/LLNL/Caliper
 - Coz: Finding Code that Counts with Causal Profiling
 	- https://github.com/plasma-umass/coz/
 	- Charlie Curtsinger, Emery Berger
@@ -232,7 +305,9 @@
 	- ;login: 41(2) (2016)
 		- https://www.usenix.org/publications/login/summer2016/curtsinger
 	- Performance Matters - Strange Loop 2019; Emery Berger
-		- https://www.youtube.com/watch?v=r-TLSBdHe1A&feature=youtu.be
+		- https://www.youtube.com/watch?v=r-TLSBdHe1A
+	- Coz vs. Sampling Profilers
+		- https://easyperf.net/blog/2020/02/26/coz-vs-sampling-profilers
 - easy_profiler: Lightweight cross-platform profiler library for C++
 	- https://github.com/yse/easy_profiler
 - Event Tracing for Windows (ETW) / Windows Performance Toolkit – Xperf
@@ -241,9 +316,14 @@
 - gperftools (originally Google Performance Tools)
 	- "The fastest malloc we’ve seen; works particularly well with threads and STL. Also: thread-friendly heap-checker, heap-profiler, and cpu-profiler."
 	- https://github.com/gperftools/gperftools
-- gprof2dot
-	- "Python script to convert the output from many profilers into a dot graph."
-	- https://github.com/jrfonseca/gprof2dot
+- HawkTracer
+	- a highly portable, low-overhead, configurable profiling tool for getting performance metrics from low-end devices
+	- Linux, Windows, macOS; C & C++ library; Python & Rust wrappers
+	- https://www.hawktracer.org/
+	- https://github.com/amzn/hawktracer
+	- Low-end platform profiling with HawkTracer profiler
+		- FOSDEM 2020; Marcin Kolny
+		- https://fosdem.org/2020/schedule/event/debugging_hawktrace/
 - Hotspot - the Linux perf GUI for performance analysis
 	- https://www.kdab.com/hotspot-gui-linux-perf-profiler/
 	- https://github.com/KDAB/hotspot
@@ -257,6 +337,8 @@
 	- https://github.com/RRZE-HPC/likwid/wiki/PatternsHaswellEP
 - microprofile: an embeddable profiler
 	- https://github.com/jonasmr/microprofile
+- not-perf: A sampling CPU profiler for Linux
+	- https://github.com/koute/not-perf
 - Optick: C++ Profiler For Games
 	- https://github.com/bombomby/optick
 	- https://optick.dev/
@@ -271,11 +353,17 @@
 	- http://web.eece.maine.edu/~vweaver/projects/perf_events/
 - perfmon2 - http://perfmon2.sourceforge.net/
 	- "Perfmon2 aims to be a portable interface across all modern processors. It is designed to give full access to a given PMU and all the corresponding hardware performance counters. Typically the PMU hardware implementations use a different number of registers, counters with different length and possibly other unique features, a complexity that the software has to cope with. Although processors have different PMU implementations, they usually use configurations registers and data registers. Perfmon2 provides a uniform abstract model of these registers and exports read/write operations accordingly."
+- Perfetto - System profiling, app tracing, and trace analysis
+	- Performance instrumentation and tracing for Android, Linux, and Chrome
+	- https://github.com/google/perfetto
+	- https://perfetto.dev/
+	- https://perfetto.dev/docs/
 - Performance Application Programming Interface (PAPI)
 	- http://icl.cs.utk.edu/papi/
 	- http://icl.cs.utk.edu/projects/papi/wiki/Main_Page
 	- http://www.drdobbs.com/tools/performance-monitoring-with-papi/184406109
 	- papi-wrapper (C++ library) - https://github.com/sean-chester/papi-wrapper
+	- libpapipp: A C++ wrapper around libpapi - https://github.com/david-grs/papipp
 - pmu tools: Intel PMU profiling tools
 	- https://github.com/andikleen/pmu-tools
 	- https://github.com/andikleen/pmu-tools/wiki/toplev-manual
@@ -289,10 +377,25 @@
 - sysdig
 	- https://github.com/draios/sysdig
 	- https://sysdig.com/blog/50-shades-of-system-calls/
+- timemory: Timing + Memory + Hardware Counter Utilities for C / C++ / CUDA / Python
+	- Linux, macOS, Windows
+	- https://github.com/NERSC/timemory
+	- Timemory: Modular Performance Analysis for HPC
+		- ISC 2020
+		- Jonathan R. Madsen, Muaaz G. Awan, Hugo Brunie, Jack Deslippe, Rahulkumar Gayatri, Leonid Oliker, Yunsong Wang, Charlene Yang, Samuel Williams
+		- https://doi.org/10.1007/978-3-030-50743-5_22
 - Tracy Profiler
 	- Tracy is a real time, nanosecond resolution frame profiler that can be used for remote or embedded telemetry of your application. It can profile CPU (C++, Lua), GPU (OpenGL, Vulkan) and memory. It also can display locks held by threads and their interactions with each other.
 	- https://bitbucket.org/wolfpld/tracy
 	- Introduction to the Tracy profiler - https://www.youtube.com/watch?v=fB5B46lbapc
+
+## Profiling: Output
+
+- cpuprofilify: Converts output of various profiling/sampling tools to the .cpuprofile format so it can be loaded into Chrome DevTools.
+	- https://github.com/thlorenz/cpuprofilify
+- gprof2dot
+	- "Python script to convert the output from many profilers into a dot graph."
+	- https://github.com/jrfonseca/gprof2dot
 
 # Timing
 
@@ -306,6 +409,8 @@
 - Flame Graphs
 	- http://www.brendangregg.com/flamegraphs.html
 	- http://queue.acm.org/detail.cfm?id=2927301
+	- Memory Leak (and Growth) Flame Graphs
+		- http://www.brendangregg.com/FlameGraphs/memoryflamegraphs.html
 - FlameScope: a visualization tool for exploring different time ranges as Flame Graphs
 	- https://github.com/Netflix/flamescope
 	- Netflix FlameScope - https://medium.com/@NetflixTechBlog/netflix-flamescope-a57ca19d47bb

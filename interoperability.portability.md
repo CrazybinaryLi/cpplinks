@@ -2,15 +2,15 @@
 
 # Contents
 
-- [General](#general): [Readings](#readings), [Software](#software), [Talks](#talks)
-- [ABI](#abi): [Readings](#readings-1), [Software](#software-1), [Talks](#talks-1)
-- [Name Mangling](#name-mangling): [Readings](#readings-2), [Software](#software-2), [Talks](#talks-2)
+- [General](#general): [Readings](#general-readings), [Software](#general-software), [Talks](#general-talks)
+- [ABI](#abi): [Readings](#abi-readings), [Software](#abi-software), [Talks](#abi-talks)
+- [Name Mangling](#name-mangling): [Readings](#name-mangling-readings), [Software](#name-mangling-software), [Talks](#name-mangling-talks)
 
 ---
 
 # General
 
-## Readings
+## General: Readings
 
 - Beautiful Native Libraries
 	- http://lucumr.pocoo.org/2013/8/18/beautiful-native-libraries/
@@ -40,17 +40,17 @@
 	- https://arxiv.org/abs/1907.00863
 	- https://github.com/jku-ssw/gcc-builtin-study
 
-## Software
+## General: Software
 
 - Hedley
 	- a single C/C++ header you can include in your project to enable compiler-specific features while retaining compatibility with all compilers. It contains dozens of macros to help make your code easier to use, harder to misuse, safer, faster, and more portable.
 	- https://nemequ.github.io/hedley/
 	- https://github.com/nemequ/hedley
 - Portable Snippets
-	- a collection of public domain (CC0) code snippets written in C for performing various common tasks which are typically OS, architecture, and/or compiler-dependent. 
+	- a collection of public domain (CC0) code snippets written in C for performing various common tasks which are typically OS, architecture, and/or compiler-dependent.
 	- https://github.com/nemequ/portable-snippets
 
-## Talks
+## General: Talks
 
 - Making a Language Cross Platform: Libraries and Tooling
 	- 2019 LLVM Developers’ Meeting; Gwen Mittertreiner
@@ -67,14 +67,18 @@
 
 # ABI
 
-## Readings
+## ABI: Readings
 
 - `[[trivial_abi]]` 101
 	- https://quuxplusone.github.io/blog/2018/05/02/trivial-abi-101/
+- ABI Breaks: Not just about rebuilding
+	- https://www.reddit.com/r/cpp/comments/fc2qqv/abi_breaks_not_just_about_rebuilding/
 - ABI Policy and Guidelines - The GNU C++ Library Manual
 	- https://gcc.gnu.org/onlinedocs/libstdc++/manual/abi.html
 - ABIs, linkers and other animals - Stephen Kell (2014)
 	- https://www.cl.cam.ac.uk/~srk31/research/talks/kell14abis-slides.pdf
+- Big List of ABI Resources
+	- https://github.com/lenary/abis
 - Binary Compatibility Examples
 	- https://community.kde.org/Policies/Binary_Compatibility_Examples
 - Binary Compatibility Issues With C++
@@ -84,6 +88,16 @@
 	- http://syrcose.ispras.ru/2009/files/02_paper.pdf
 	- http://static.coldattic.info/restricted/science/syrcose09/cppbincomp.pdf
 - Binary-compatible C++ Interfaces - https://chadaustin.me/cppinterface.html
+- C++ Standards Committee Papers
+	- ABI breakage - summary of initial comments
+		- 2019; Roger Orr
+		- http://wg21.link/P1654
+	- What is ABI, and What Should WG21 Do About It?
+		- 2020; Titus Winters
+		- http://wg21.link/P2028
+	- Extending the Type System to Provide API and ABI Flexibility
+		- P2123R0; 2020-03-04; Hal Finkel, Tom Scogland
+		- http://wg21.link/p2123
 - C++: Under the Hood (March 1994) by Jan Gray
 	- http://files.rsdn.org/4539/cud94.htm
 	- https://blogs.msdn.microsoft.com/xiangfan/2012/02/06/c-under-the-hood/
@@ -97,6 +111,8 @@
 - Itanium C++ ABI
 	- https://itanium-cxx-abi.github.io/cxx-abi/
 	- https://github.com/itanium-cxx-abi/cxx-abi
+- Lessons from the Unix stdio ABI: 40 Years Later
+	- https://fingolfin.org/blog/20200327/stdio-abi.html
 - Some thoughts on binary compatibility - http://blog.qt.io/blog/2009/08/12/some-thoughts-on-binary-compatibility/
 - Some thoughts on calling convention - http://blog.qt.io/blog/2009/08/15/some-thoughts-on-calling-convention/
 - The Importance of Calling Conventions - http://blog.aaronballman.com/2011/04/the-importance-of-calling-conventions/
@@ -104,7 +120,7 @@
 - X86-64 System V Application Binary Interface
 	- https://github.com/hjl-tools/x86-psABI/wiki/X86-psABI
 
-## Software
+## ABI: Software
 
 - ABI Compliance Checker (ABICC)
 	- A tool for checking backward API/ABI compatibility of a C/C++ library
@@ -130,10 +146,18 @@
 	- Talk: Libabigail: How semantic analysis of C and C++ ELF binaries can be used to analyze ABI changes (openSUSE Conference 2017)
 		- https://media.ccc.de/v/1234-libabigail-how-semantic-analysis-of-c-and-c-elf-binaries-can-be-used-to-analyze-abi-changes
 		- https://www.youtube.com/watch?v=wxVBuZK8Dl0
+- abimap: A helper for library maintainers to use symbol versioning
+	- https://github.com/ansasaki/abimap
+	- Don't break your users: keep your API/ABI stable!
+		- DevConf.CZ 2020; Anderson Sasaki
+		- https://www.youtube.com/watch?v=tFuFO_bDke0
+- Component Interface Binder (CIB)
+	- publish ABI stable C++ library that can be used across different compilers
+	- https://github.com/satya-das/cib
 - pexcheck: Pexcheck is a command-line tool for checking the binary compatibility of public interfaces.
 	- https://github.com/AVGTechnologies/pexcheck
 
-## Talks
+## ABI: Talks
 
 - Analyzing changes to the binary interface exposed by the Kernel to its modules
 	- Kernel Recipes 2019; Dodji Seketeli, Matthias Männich, Jessica Yu
@@ -179,13 +203,14 @@
 	- https://www.youtube.com/watch?v=DZ93lP1I7wU
 - What's an ABI and why is it so complicated?
 	- ACCU 2015; Jonathan Wakely
-	- https://accu.org/content/conf2015/JonathanWakely-What%20Is%20An%20ABI%20And%20Why%20Is%20It%20So%20Complicated.pdf
+	- https://kayari.org/tmp/abi.html
+	- https://accu.org/conf-docs/PDFs_2015/JonathanWakely-What%20Is%20An%20ABI%20And%20Why%20Is%20It%20So%20Complicated.pdf
 
 ---
 
 # Name Mangling
 
-## Readings
+## Name Mangling: Readings
 
 - Measuring Mangled Name Ambiguity in Large C / C++ Projects
 	- SQAMIA 2017
@@ -198,19 +223,18 @@
 	- http://ieeexplore.ieee.org/document/8090143/
 	- https://www.researchgate.net/publication/320832497_Towards_Better_Symbol_Resolution_for_CC_Programs_A_Cluster-Based_Solution
 
-## Software
+## Name Mangling: Software
 
 - c++filtjs: c++filt in JavaScript with Emscripten
 	- https://d.fuqu.jp/c++filtjs/
 	- https://github.com/nattofriends/c-filtjs
 - C++ Itanium ABI demangler: C++ demangler in Python that converts the mangled name into an AST
-	- https://github.com/whitequark/binja_itanium_cxx_abi/blob/master/demangler.py
+	- https://github.com/whitequark/binja_itanium_cxx_abi/tree/master/itanium_demangler
 - cppmangle: A library for demangling and mangling Visual Studio C++ names
 	- https://github.com/AVGTechnologies/cppmangle
 - cpp_demangle: A crate for demangling C++ symbols
 	- https://github.com/gimli-rs/cpp_demangle
 - Demangler: A C++ library and tools for demangling mangled C++ names
-	- https://github.com/avast-tl/demangler
 	- https://github.com/avast-tl/retdec/tree/master/src/demangler
 	- https://github.com/avast-tl/retdec/tree/master/tests/demangler
 - demumble: A better c++filt and a better undname.exe, in one binary.
@@ -218,6 +242,6 @@
 	- https://github.com/nico/demumble
 - GCC and MSVC C++ Demangler - http://demangler.com/
 
-## Talks
+## Name Mangling: Talks
 
 - C++ Weekly - Ep 8 C++ Name Demangling - https://www.youtube.com/watch?v=uX99t7GmuDc

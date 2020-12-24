@@ -14,6 +14,8 @@ See also: [Debugging](https://github.com/MattPD/cpplinks/blob/master/debugging.m
 
 # Readings
 
+- A simple way to get more value from tracing
+	- https://danluu.com/tracing-analytics/
 - Debug your programs like they're closed source! (strace, ltrace)
 	- https://jvns.ca/blog/2014/04/20/debug-your-programs-like-theyre-closed-source/
 - Hidden in Plain Sight
@@ -40,9 +42,9 @@ See also: [Debugging](https://github.com/MattPD/cpplinks/blob/master/debugging.m
 
 ## Hardware Assistance / Processor Tracing
 
-sampling-based processor tracing: Intel LBR (Last Branch Record), Itanium BTB (Branch Trace Buffer), PowerPC BHRB (Branch History Rolling Buffer)
+sampling-based processor tracing: [Intel LBR (Last Branch Record)](#intel-lbr-last-branch-record), Itanium BTB (Branch Trace Buffer), PowerPC BHRB (Branch History Rolling Buffer)
 
-non-sampling-based processor tracing: Intel BTS (Branch Trace Store), Intel PT (Intel Processor Trace), ARM CoreSight
+non-sampling-based processor tracing: [Intel BTS (Branch Trace Store)](#intel-bts-branch-trace-store), [Intel PT (Processor Trace)](#intel-pt-processor-trace), ARM CoreSight
 
 - Hardware-assisted instruction profiling and latency detection
 	- The Journal of Engineering, Volume 2016, Issue 10
@@ -70,7 +72,27 @@ non-sampling-based processor tracing: Intel BTS (Branch Trace Store), Intel PT (
 	- Sharma, S. D., Bastien, G., Nemati, H. & Dagenais, M.
 	- https://publications.polymtl.ca/2975/1/2016_Sharma_Low_overhead_hardware-assisted_virtual_machive.pdf
 
-### Intel Processor Trace (PT)
+### Intel BTS (Branch Trace Store)
+
+- libbts.c: minimal BTS tracing wrapper for Linux Perf
+	- https://gist.github.com/pkhuong/1ce34e33c6df4b9be3bc9beb22415a47
+
+### Intel LBR (Last Branch Record)
+
+- Andi Kleen
+	- An introduction to last branch records (March 23, 2016)
+		- https://lwn.net/Articles/680985/
+	- Advanced usage of last branch records (March 30, 2016)
+		- https://lwn.net/Articles/680996/
+- Denis Bakhvalov
+	- Advanced profiling topics (multiplexing & scaling), PEBS, and LBR
+		- https://easyperf.net/blog/2018/06/08/Advanced-profiling-topics-PEBS-and-LBR
+	- Precise timing of machine code with Linux perf
+		- https://easyperf.net/blog/2019/04/03/Precise-timing-of-machine-code-with-Linux-perf
+	- Estimating branch probability using Intel LBR feature
+		- https://easyperf.net/blog/2019/05/06/Estimating-branch-probability
+
+### Intel PT (Processor Trace)
 
 - Andi Kleen's Intel Processor Trace resources
 	- http://halobates.de/blog/p/406
@@ -87,7 +109,7 @@ non-sampling-based processor tracing: Intel BTS (Branch Trace Store), Intel PT (
 	- Better profiling experience - https://easyperf.net/blog/2019/09/13/Intel-PT-part4
 - Failure Sketches: A Better Way to Debug
 	- HotOS 2015
-	- Baris Kasikci, Benjamin Schubert, Cristiano Pereira, Gilles Pokam, Madan Musuvathi, George Candea 
+	- Baris Kasikci, Benjamin Schubert, Cristiano Pereira, Gilles Pokam, Madan Musuvathi, George Candea
 	- https://www.usenix.org/conference/hotos15/workshop-program/presentation/kasikci
 	- http://dslab.epfl.ch/pubs/failure-sketches.pdf
 	- https://web.eecs.umich.edu/~barisk/public/fs-slides.pdf
@@ -102,6 +124,9 @@ non-sampling-based processor tracing: Intel BTS (Branch Trace Store), Intel PT (
 - Fuzzing
 	- Internals of Hongfuzz - Intel PT
 		- https://tunnelshade.in/blog/2018/09/hongfuzz-intel-pt-instrumentation/
+	- kAFL: HW-assisted Feedback Fuzzing for x86 Kernels
+		- https://github.com/IntelLabs/kAFL/
+		- kAFL uses Qemu/KVM and Intel PT to provide fast execution and coverage feedback. This allows to run many x86 FW and OS kernels with any desired toolchain and without major modifications.
 	- PTrix: Efficient Hardware-Assisted Fuzzing for COTS Binary
 		- 2019 Asia Conference on Computer and Communications Security (AsiaCCS)
 		- Yaohui Chen, Dongliang Mu, Jun Xu, Zhichuang Sun, Wenbo Shen, Xinyu Xing, Long Lu, Bing Mao
@@ -111,15 +136,24 @@ non-sampling-based processor tracing: Intel BTS (Branch Trace Store), Intel PT (
 		- https://github.com/googleprojectzero/winafl/blob/master/readme_pt.md
 - Intel PT Micro Tutorial - MICRO-48 (2015)
 	- https://sites.google.com/site/intelptmicrotutorial/
+- IPTAnalyzer: Intel PT log analyzer
+	- https://github.com/ohjeongwook/iptanalyzer
+	- Using Intel PT for Vulnerability Triaging with IPTAnalyzer
+		- https://darungrim.com/research/2020-05-07-UsingIntelPTForVulnerabilityTriagingWithIPTAnalyzer.html
+		- "IPTAnalyzer is a tool to perform parallel processing of the IPT trace logs. The tool can process Intel PT trace using Python multiprocessing library and create a basic blocks cache file. This block information can be useful in overall analysis of the control flow changes. For example, if you want to collect instructions from specific image or address range, you can query this basic block cache file to find the locations that falls into the range before retrieving full instructions."
 - libipt - an Intel(R) Processor Trace decoder library
 	- https://github.com/01org/processor-trace
 	- https://github.com/intel/libipt
+- libxdc (eXtremely fast DeCoder): The fastest Intel PT decoder for fuzzing
+	- https://github.com/nyx-fuzz/libxdc
 - Linux perf Documentation: Intel Processor Trace
 	- https://github.com/torvalds/linux/blob/master/tools/perf/Documentation/intel-pt.txt
 - Inferring Fine-grained Control Flow Inside SGX Enclaves with Branch Shadowing
 	- https://arxiv.org/abs/1611.06952
 	- https://www.usenix.org/conference/usenixsecurity17/technical-sessions/presentation/lee-sangho
 	- "Table 1: Measuring branch misprediction penalty with RDTSCP, Intel PT CYC packet, and LBR elapsed cycle (10,000 times). We put 120 NOP instructions at the fall-through path. The LBR elapsed cycle is less noisy than RDTSCP and Intel PT."
+- Perf tools support for Intel® Processor Trace
+	- https://perf.wiki.kernel.org/index.php/Perf_tools_support_for_Intel%C2%AE_Processor_Trace
 - POMP: Postmortem Program Analysis with Hardware-Enhanced Post-Crash Artifacts
 	- USENIX Security 2017
 	- Jun Xu, Dongliang Mu, Xinyu Xing, Peng Liu, Ping Chen, Bing Mao
@@ -147,8 +181,8 @@ non-sampling-based processor tracing: Intel BTS (Branch Trace Store), Intel PT (
 		- Richard Johnson - http://moflow.org/
 		- http://moflow.org/Presentations/Harnessing%20Intel%20Processor%20Trace%20on%20Windows%20for%20Vulnerability%20Discovery%20-%20rjohnson.pdf
 		- HITB2017AMS
-		- https://www.youtube.com/watch?v=r8lzui24Cdw
-		- http://conference.hitb.org/hitbsecconf2017ams/materials/D1T1%20-%20Richard%20Johnson%20-%20Harnessing%20Intel%20Processor%20Trace%20on%20Windows%20for%20Vulnerability%20Discovery.pdf
+			- https://www.youtube.com/watch?v=r8lzui24Cdw
+			- http://conference.hitb.org/hitbsecconf2017ams/materials/D1T1%20-%20Richard%20Johnson%20-%20Harnessing%20Intel%20Processor%20Trace%20on%20Windows%20for%20Vulnerability%20Discovery.pdf
 
 ---
 
@@ -176,7 +210,7 @@ non-sampling-based processor tracing: Intel BTS (Branch Trace Store), Intel PT (
 		- https://github.com/microsoft/DTrace-on-Windows
 		- https://techcommunity.microsoft.com/t5/Windows-Kernel-Internals/DTrace-on-Windows/ba-p/362902
 	- DTrace Review
-		- Google Tech Talks; August 15, 2007; Bryan Cantrill 
+		- Google Tech Talks; August 15, 2007; Bryan Cantrill
 		- https://www.youtube.com/watch?v=TgmA48fILq8
 		- https://www.youtube.com/watch?v=6chLw2aodYQ
 - minitrace: Simple C/C++ library for producing JSON traces suitable for Chrome's built-in trace viewer (about:tracing)
@@ -213,6 +247,8 @@ non-sampling-based processor tracing: Intel BTS (Branch Trace Store), Intel PT (
 
 - Linux tracing systems & how they fit together
 	- https://jvns.ca/blog/2017/07/05/linux-tracing-systems/
+- etrace: Utility for tracing execution of apps
+	- https://github.com/canonical/etrace
 - KUtrace
 	- Low-overhead tracing of all Linux kernel-user transitions, for serious performance analysis. Includes kernel patches, loadable module, and post-processing software. Output is HTML/SVG per-CPU-core timeline that you can pan/zoom down to the nanosecond.
 	- https://github.com/dicksites/KUtrace
@@ -225,23 +261,35 @@ non-sampling-based processor tracing: Intel BTS (Branch Trace Store), Intel PT (
 		- Six different views of the execution of "Hello, World!" show what is often missing in today's tools
 		- ACM Queue 16, 5 (2018); Richard L. Sites
 		- https://queue.acm.org/detail.cfm?id=3291278
+	- KUtrace 2020
+		- Stanford EE380 Computer Systems Colloquium (2020); Dick Sites
+		- https://www.youtube.com/watch?v=2HE7tSZGna0
+		- https://ee.stanford.edu/event/seminar/ee380-computer-systems-colloquium-presents-kutrace-2020
 - ltrace: Debugging program to track runtime library calls in dynamically linked programs
 	- ltrace intercepts and records dynamic library calls which are called by an executed process and the signals received by that process. It can also intercept and print the system calls executed by the program.
 	- http://ltrace.org/
 	- https://gitlab.com/cespedes/ltrace
 	- How does ltrace work? - https://blog.packagecloud.io/eng/2016/03/14/how-does-ltrace-work/
+- ProcMon-for-Linux: Process Monitor for Linux
+	- Process Monitor (Procmon) is a Linux reimagining of the classic Procmon tool from the Sysinternals suite of tools for Windows. Procmon provides a convenient and efficient way for Linux developers to trace the syscall activity on the system.
+	- https://github.com/microsoft/ProcMon-for-Linux
+- reverie: trace and intercept Linux syscalls
+	- A library to intercept Linux syscalls (and select x86_64 instructions), and convert them into function calls. The user of this library provides a shared library containing the callbacks that are triggered on intercepted events.
+	- https://github.com/reverie-rs/reverie
 - StackTrack — Linux Call graph visualization and execution tracking
 	- https://stacktrack.github.io/
 - uftrace: Function (graph) tracer for user-space
 	- https://github.com/namhyung/uftrace
 	- Understanding the runtime behaviors of C++ programs using uftrace tool
-		- CppCon 2017; Honggyu Kim 
+		- CppCon 2017; Honggyu Kim
 		- https://www.youtube.com/watch?v=s0B8hV2O8ps
 
 ### Software: Linux - BCC/BPF
 
 #### Software: Linux - BCC/BPF - Readings
 
+- eBPF - Introduction, Tutorials & Community Resources
+	- https://ebpf.io/
 - Dive into BPF: a list of reading material
 	- https://qmonnet.github.io/whirl-offload/2016/09/01/dive-into-bpf/
 - The BSD Packet Filter
@@ -277,9 +325,15 @@ non-sampling-based processor tracing: Intel BTS (Branch Trace Store), Intel PT (
 - uBPF: Userspace eBPF VM
 	- https://github.com/iovisor/ubpf
 - ply: Dynamic Tracing in Linux
-	- A light-weight dynamic tracer for Linux that leverages the kernel's BPF VM in concert with kprobes and tracepoints to attach probes to arbitrary points in the kernel. 
+	- A light-weight dynamic tracer for Linux that leverages the kernel's BPF VM in concert with kprobes and tracepoints to attach probes to arbitrary points in the kernel.
 	- https://wkz.github.io/ply/
 	- https://github.com/iovisor/ply
+
+#### Software: Linux - BCC/BPF - Talks
+
+- Tools and mechanisms to debug BPF programs
+	- FOSDEM 2020; Quentin Monnet
+	- https://fosdem.org/2020/schedule/event/debugging_bpf/
 
 ### Software: Linux - ftrace
 
@@ -303,6 +357,8 @@ non-sampling-based processor tracing: Intel BTS (Branch Trace Store), Intel PT (
 	- KernelShark 1.0; What’s new and what’s coming - https://kernel-recipes.org/en/2018/talks/kernelshark-1-0-whats-new-and-whats-coming/
 - perf-tools: Performance analysis tools based on Linux perf_events (aka perf) and ftrace
 	- https://github.com/brendangregg/perf-tools
+- Tracing the Linux kernel with ftrace
+	- https://embeddedbits.org/tracing-the-linux-kernel-with-ftrace/
 - Understanding the Linux Kernel via Ftrace - Kernel Recipes 2017 - Steven Rostedt
 	- https://kernel-recipes.org/en/2017/talks/understanding-the-linux-kernel-via-ftrace/
 	- https://www.youtube.com/watch?v=2ff-7UTg5rE
@@ -326,6 +382,15 @@ non-sampling-based processor tracing: Intel BTS (Branch Trace Store), Intel PT (
 
 - ptrace - process trace - http://man7.org/linux/man-pages/man2/ptrace.2.html
 - Adventures into ptrace(2) Hell - https://www.cyphar.com/blog/post/20160703-remainroot-ptrace-hell
+- DetTrace: A Reproducible Container Abstraction
+	- A determinizing tracer using Ptrace
+	- https://github.com/dettrace/dettrace
+	- Reproducible Containers
+		- Architectural Support for Programming Languages and Operating Systems (ASPLOS) 2020
+		- Omar S. Navarro Leija, Kelly Shiptoski, Ryan G. Scott, Baojun Wang, Nicholas Renner, Ryan R. Newton, Joseph Devietti
+		- https://doi.org/10.1145/3373376.3378519
+		- https://gatowololo.github.io/resources/publications/dettrace.pdf
+		- https://www.youtube.com/watch?v=YkmS-vf12nE
 - Hiding Call To Ptrace - https://github.com/yellowbyte/analysis-of-anti-analysis/blob/master/research/hiding_call_to_ptrace/hiding_call_to_ptrace.md
 - Intercepting and Emulating Linux System Calls with Ptrace - http://nullprogram.com/blog/2018/06/23/
 - Ptrace-burrito: A plugin style wrapper around ptrace on Linux.
@@ -343,25 +408,44 @@ non-sampling-based processor tracing: Intel BTS (Branch Trace Store), Intel PT (
 - Strace little book
 	- https://github.com/NanXiao/strace-little-book
 	- https://nanxiao.gitbooks.io/strace-little-book/
-- Strace: Monitoring The Kernel-User-Space Conversation
-	- NDC TechTown 2018; Michael Kerrisk
-	- https://www.youtube.com/watch?v=oFt6V56BOlo
-	- http://man7.org/conf/ndctechtown2018/system_call_tracing_with_strace-NDC-TechTown-Kerrisk.pdf
 - Julia Evans
 	- A zine about strace
 		- https://jvns.ca/blog/2015/04/14/strace-zine/
 		- https://wizardzines.com/zines/strace/
 	- strace posts: https://jvns.ca/categories/strace/
-- How does strace work? - https://blog.packagecloud.io/eng/2016/02/29/how-does-strace-work/
+- How does strace work?
+	- https://blog.packagecloud.io/eng/2016/02/29/how-does-strace-work/
+- My Favourite Secret Weapon – strace
+	- https://zwischenzugs.com/2011/08/29/my-favourite-secret-weapon-strace/
+- Strace -- The Sysadmin's Microscope
+	- https://blogs.oracle.com/ksplice/strace-the-sysadmins-microscope
+- strace cheat sheet
+	- https://blog.packagecloud.io/eng/2015/11/15/strace-cheat-sheet/
+- Strace: The Lost Chapter
+	- http://price.mit.edu/blog/2010/08/strace-the-lost-chapter/
+
+#### Software: Linux - strace - Talks
+
+- strace talks
+	- https://github.com/strace/strace-talks
 - Modern strace
 	- DevConf.CZ 2019; Dmitry Levin
 	- https://www.youtube.com/watch?v=cwDFpzQuWSU
 	- https://devconfcz2019.sched.com/event/JchD
-- My Favourite Secret Weapon – strace - https://zwischenzugs.com/2011/08/29/my-favourite-secret-weapon-strace/
-- Strace -- The Sysadmin's Microscope - https://blogs.oracle.com/ksplice/strace-the-sysadmins-microscope
-- strace cheat sheet - https://blog.packagecloud.io/eng/2015/11/15/strace-cheat-sheet/
-- strace: new features - FOSDEM 2018 - https://fosdem.org/2018/schedule/event/debugging_tools_strace_features/
-- Strace: The Lost Chapter - http://price.mit.edu/blog/2010/08/strace-the-lost-chapter/
+- Postmodern strace
+	- FOSDEM 2020; Dmitry Levin
+	- https://fosdem.org/2020/schedule/event/debugging_strace_modern/
+- strace --seccomp-bpf: a look under the hood
+	- FOSDEM 2020; Paul Chaignon
+	- https://fosdem.org/2020/schedule/event/debugging_strace_bpf/
+	- https://pchaigno.github.io/strace/2019/10/02/introducing-strace-seccomp-bpf.html
+- Strace: Monitoring The Kernel-User-Space Conversation
+	- NDC TechTown 2018; Michael Kerrisk
+	- https://www.youtube.com/watch?v=oFt6V56BOlo
+	- http://man7.org/conf/ndctechtown2018/system_call_tracing_with_strace-NDC-TechTown-Kerrisk.pdf
+- strace: new features
+	- FOSDEM 2018; Dmitry Levin
+	- https://fosdem.org/2018/schedule/event/debugging_tools_strace_features/
 
 ## Software: Windows
 
@@ -377,7 +461,15 @@ non-sampling-based processor tracing: Intel BTS (Branch Trace Store), Intel PT (
 	- https://github.com/immunityinc/libptrace
 - MemTrace: Memory Tracing Software
 	- https://github.com/deplinenoise/ig-memtrace
-- tiny_tracer: A Pin Tool for tracing API calls and transition between sections of the traced module 
+- NtTrace: An strace-like program for the Windows 'native' API
+	- https://rogerorr.github.io/NtTrace/
+	- https://github.com/rogerorr/NtTrace
+- StraceNT - A System Call Tracer for Windows
+	- https://intellectualheaven.com/default.asp?BH=StraceNT
+	- https://github.com/ipankajg/stracent
+- Symbolizer - A fast execution trace symbolizer for Windows
+	- https://github.com/0vercl0k/symbolizer
+- tiny_tracer: A Pin Tool for tracing API calls and transition between sections of the traced module
 	- https://github.com/hasherezade/tiny_tracer
 	- Tracing executables with a Pin Tool (tiny_tracer) - https://www.youtube.com/watch?v=kurzaoWuSHA
 - tracectory: a tool to analyze and visualize x86 instruction traces
